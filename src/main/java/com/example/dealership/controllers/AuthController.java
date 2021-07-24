@@ -30,7 +30,7 @@ import com.example.dealership.payload.response.MessageResponse;
 import com.example.dealership.repositories.user.RoleRepository;
 import com.example.dealership.repositories.user.UserRepository;
 import com.example.dealership.security.jwt.JwtUtils;
-import com.example.dealership.security.services.UserDetailsImpl;
+import com.example.dealership.security.services.user.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

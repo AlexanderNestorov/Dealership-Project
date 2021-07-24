@@ -1,4 +1,4 @@
-package com.example.dealership.security.services;
+package com.example.dealership.security.services.user;
 
 import com.example.dealership.models.user.User;
 import com.example.dealership.repositories.user.UserRepository;

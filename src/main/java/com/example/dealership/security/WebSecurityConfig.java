@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.example.dealership.security.jwt.AuthEntryPointJwt;
 import com.example.dealership.security.jwt.AuthTokenFilter;
-import com.example.dealership.security.services.UserDetailsServiceImpl;
+import com.example.dealership.security.services.user.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
