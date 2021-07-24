@@ -1,4 +1,4 @@
-package com.example.dealership.models;
+package com.example.dealership.models.user;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -1,7 +1,7 @@
 package com.example.dealership.security.services;
 
-import com.example.dealership.models.User;
-import com.example.dealership.repositories.UserRepository;
+import com.example.dealership.models.user.User;
+import com.example.dealership.repositories.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

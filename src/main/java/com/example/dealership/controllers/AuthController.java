@@ -20,15 +20,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dealership.models.ERole;
-import com.example.dealership.models.Role;
-import com.example.dealership.models.User;
+import com.example.dealership.models.user.ERole;
+import com.example.dealership.models.user.Role;
+import com.example.dealership.models.user.User;
 import com.example.dealership.payload.request.LoginRequest;
 import com.example.dealership.payload.request.SignupRequest;
 import com.example.dealership.payload.response.JwtResponse;
 import com.example.dealership.payload.response.MessageResponse;
-import com.example.dealership.repositories.RoleRepository;
-import com.example.dealership.repositories.UserRepository;
+import com.example.dealership.repositories.user.RoleRepository;
+import com.example.dealership.repositories.user.UserRepository;
 import com.example.dealership.security.jwt.JwtUtils;
 import com.example.dealership.security.services.UserDetailsImpl;
 

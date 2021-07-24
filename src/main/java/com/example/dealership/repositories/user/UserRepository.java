@@ -1,6 +1,6 @@
-package com.example.dealership.repositories;
+package com.example.dealership.repositories.user;
 
-import com.example.dealership.models.User;
+import com.example.dealership.models.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

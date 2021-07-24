@@ -1,7 +1,7 @@
-package com.example.dealership.repositories;
+package com.example.dealership.repositories.user;
 
-import com.example.dealership.models.ERole;
-import com.example.dealership.models.Role;
+import com.example.dealership.models.user.ERole;
+import com.example.dealership.models.user.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
