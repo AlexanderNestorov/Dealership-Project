@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import {Car} from "../shared/interfaces/Car";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-home',
@@ -7,17 +9,22 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  content?: string;
+  cars?: Car[];
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getCars();
+  }
+
+  public getCars(): void {
     this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
+      (response: Car[]) => {
+        this.cars = response;
+
       },
-      err => {
-        this.content = JSON.parse(err.error).message;
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
     );
   }

@@ -3,6 +3,9 @@ package com.example.dealership.models.car;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,9 +23,8 @@ public class Car {
     @Column(length = 100,nullable = false)
     private String modelName;
 
-    @OneToOne
-    @JoinColumn(name = "brand", nullable = false)
-    private Brand brand;
+    @Column( nullable = false)
+    private String brand;
 
     @Column(nullable = false)
     private String type;
@@ -51,10 +53,28 @@ public class Car {
     @Column(nullable = false)
     private String drivetrain;
 
+    @Column(nullable = false)
+    @Min(value = 1000, message = "Price should be higher than 1000$.")
+    private int price;
+
+    @Column(nullable = false)
+    @Min(value = 1990, message = "No cars produced before 1990 are allowed!")
+    private int yearOfProduction;
+
+
+
+
+    @ElementCollection
+    private List<String> pictures = new ArrayList<String>();
+
     public Car() {
     }
 
-    public Car(String modelName, Brand brand, String type, int power, int topSpeed, int torque, int fuelCapacity, int weight, String fuelType, String transmission, String drivetrain) {
+    public Car(Long id,String modelName, String brand, String type, int power, int topSpeed,
+               int torque, int fuelCapacity, int weight, String fuelType, String transmission,
+               String drivetrain,List<String> pictures,int price, int yearOfProduction) {
+
+        this.id = id;
         this.modelName = modelName;
         this.brand = brand;
         this.type = type;
@@ -66,6 +86,17 @@ public class Car {
         this.fuelType = fuelType;
         this.transmission = transmission;
         this.drivetrain = drivetrain;
+        this.pictures = pictures;
+        this.price = price;
+        this.yearOfProduction = yearOfProduction;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public Long getId() {
@@ -84,11 +115,11 @@ public class Car {
         this.modelName = modelName;
     }
 
-    public Brand getBrand() {
+    public String getBrand() {
         return brand;
     }
 
-    public void setBrand(Brand brand) {
+    public void setBrand(String brand) {
         this.brand = brand;
     }
 
@@ -162,5 +193,13 @@ public class Car {
 
     public void setDrivetrain(String drivetrain) {
         this.drivetrain = drivetrain;
+    }
+
+    public List<String> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<String> pictures) {
+        this.pictures = pictures;
     }
 }

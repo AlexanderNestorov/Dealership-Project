@@ -1,4 +1,4 @@
-package com.example.dealership.security.services.car;
+package com.example.dealership.services;
 
 import com.example.dealership.exceptions.CarNotFoundException;
 import com.example.dealership.models.car.Car;
@@ -37,5 +37,9 @@ public class CarService {
 
     public void deleteCar(Long id) {
         carRepository.deleteCarById(id);
+    }
+
+    public List<Car> findAllCarsByPriceDesc() {
+        return this.carRepository.findCarsByPrice();
     }
 }

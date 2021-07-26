@@ -2,6 +2,7 @@ package com.example.dealership.controllers;
 
 import com.example.dealership.models.car.Car;
 import com.example.dealership.repositories.car.CarRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,9 +16,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
-    @Autowired
-    CarRepository carRepository;
 
+    private final CarRepository carRepository;
+
+    public TestController(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     @GetMapping("/all")
     public List<Car> allAccess() {

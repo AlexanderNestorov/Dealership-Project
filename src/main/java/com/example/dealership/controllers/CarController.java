@@ -1,10 +1,7 @@
 package com.example.dealership.controllers;
 
-import com.example.dealership.exceptions.CarNotFoundException;
 import com.example.dealership.models.car.Car;
-import com.example.dealership.repositories.car.CarRepository;
-import com.example.dealership.security.services.car.CarService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.dealership.services.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +13,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/car")
 public class CarController {
-    @Autowired
-    CarService carService;
+    private final CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
+
 
     @GetMapping("/all")
     public ResponseEntity<List<Car>> getAllCars() {
         List<Car> cars = this.carService.findAllCars();
-
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
@@ -52,5 +52,12 @@ public class CarController {
         carService.deleteCar(id);
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/all/test")
+    public ResponseEntity<List<Car>> importCars() {
+        List<Car> cars = this.carService.findAllCarsByPriceDesc();
+
+        return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 }

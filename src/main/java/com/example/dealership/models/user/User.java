@@ -23,7 +23,7 @@ public class User {
 
 
     @Column(nullable = false, length = 50)
-    @Email
+    @Email(message = "Email should be a valid one!")
     private String email;
 
     @Column(nullable = false, length = 120)
