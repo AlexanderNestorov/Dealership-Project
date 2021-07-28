@@ -1,0 +1,8 @@
+img {
+  width: 300px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}

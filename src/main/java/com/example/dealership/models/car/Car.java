@@ -65,7 +65,7 @@ public class Car {
 
 
     @ElementCollection
-    private List<String> pictures = new ArrayList<String>();
+    private List<String> pictures = new ArrayList<>();
 
     public Car() {
     }
@@ -89,14 +89,6 @@ public class Car {
         this.pictures = pictures;
         this.price = price;
         this.yearOfProduction = yearOfProduction;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public Long getId() {
@@ -193,6 +185,22 @@ public class Car {
 
     public void setDrivetrain(String drivetrain) {
         this.drivetrain = drivetrain;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getYearOfProduction() {
+        return yearOfProduction;
+    }
+
+    public void setYearOfProduction(int yearOfProduction) {
+        this.yearOfProduction = yearOfProduction;
     }
 
     public List<String> getPictures() {

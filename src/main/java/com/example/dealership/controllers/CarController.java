@@ -54,7 +54,7 @@ public class CarController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/all/test")
+    @GetMapping("/recent")
     public ResponseEntity<List<Car>> importCars() {
         List<Car> cars = this.carService.findAllCarsByPriceDesc();
 
