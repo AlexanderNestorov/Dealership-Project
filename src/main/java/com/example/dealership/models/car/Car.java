@@ -1,12 +1,8 @@
 package com.example.dealership.models.car;
-
-
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Table(name = "cars",
@@ -18,7 +14,6 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,updatable = false)
     private Long id;
-
 
     @Column(length = 100,nullable = false)
     private String modelName;
@@ -60,9 +55,6 @@ public class Car {
     @Column(nullable = false)
     @Min(value = 1990, message = "No cars produced before 1990 are allowed!")
     private int yearOfProduction;
-
-
-
 
     @ElementCollection
     private List<String> pictures = new ArrayList<>();
