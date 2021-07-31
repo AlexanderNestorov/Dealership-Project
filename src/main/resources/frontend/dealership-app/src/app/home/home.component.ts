@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { UserService } from '../_services/user/user.service';
 import {Car} from "../shared/interfaces/Car";
 import {HttpErrorResponse} from "@angular/common/http";
-import {TokenStorageService} from "../_services/token-storage.service";
-import {CarService} from "../_services/car.service";
+import {TokenStorageService} from "../_services/user/token-storage.service";
+import {CarService} from "../_services/car/car.service";
 
 @Component({
   selector: 'app-home',
