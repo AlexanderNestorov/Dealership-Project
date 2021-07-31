@@ -5,13 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import {CoreModule} from "./core/core.module";
+import { CreateComponent } from './create/create.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {CoreModule} from "./core/core.module";
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
