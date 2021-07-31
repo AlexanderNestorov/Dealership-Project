@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "cars",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = "modelName")
-        })
+@Table(name = "cars")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false,unique = true)
     private Long id;
 
     @Column(length = 100,nullable = false)

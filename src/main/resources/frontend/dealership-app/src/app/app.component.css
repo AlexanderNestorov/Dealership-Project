@@ -1,0 +1,24 @@
+.outer-content-container {
+  min-height: 100%;
+}
+
+.inner-content-container {
+  padding-bottom: 36px;
+}
+
+.footer-container {
+  height: 24px;
+  margin-top: -36px;
+}
+
+.footer-content {
+  margin: 0 auto;
+  text-align: center;
+}
+
+app-footer{
+  position:fixed;
+  bottom:0px;
+  background-color:pink;
+  width:100%;
+}

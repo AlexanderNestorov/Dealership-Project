@@ -1,1 +1,84 @@
-<p>create works!</p>
+<div class="row">
+  <div class="col-md-4">
+    <section>
+      <form id="account" #f="ngForm" [formGroup]="form" (ngSubmit)="loginOnSubmit(f)">
+        <h4>Login</h4>
+        <hr />
+        <p class="text-danger" *ngIf="incorrectCredentials">Incorrect credentials. Please try again.</p>
+        <div class="form-group">
+          <label for="modelName">modelName</label>
+          <input id="modelName" name="modelName" class="form-control" formControlName="modelName"/>
+          <span class="text-danger" *ngIf="form.get('modelName').touched && form.get('modelName').errors?.required">Name of the model is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input id="brand" name="brand" class="form-control" formControlName="brand"/>
+          <span class="text-danger" *ngIf="form.get('brand').touched && form.get('brand').errors?.required">Brand is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input id="type" name="type" class="form-control" formControlName="type"/>
+          <span class="text-danger" *ngIf="form.get('type').touched && form.get('type').errors?.required">Type is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="power">Power</label>
+          <input id="power" name="power" class="form-control" formControlName="power"/>
+          <span class="text-danger" *ngIf="form.get('power').touched && form.get('power').errors?.required">Power is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="topSpeed">Top Speed</label>
+          <input id="topSpeed" name="topSpeed" class="form-control" formControlName="topSpeed"/>
+          <span class="text-danger" *ngIf="form.get('topSpeed').touched && form.get('topSpeed').errors?.required">Top speed is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="torque">Torque</label>
+          <input id="torque" name="torque" class="form-control" formControlName="torque"/>
+          <span class="text-danger" *ngIf="form.get('torque').touched && form.get('torque').errors?.required">Torque is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="fuelCapacity">Fuel Capacity</label>
+          <input id="fuelCapacity" name="fuelCapacity" class="form-control" formControlName="fuelCapacity"/>
+          <span class="text-danger" *ngIf="form.get('fuelCapacity').touched && form.get('fuelCapacity').errors?.required">Fuel capacity is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight</label>
+          <input id="weight" name="weight" class="form-control" formControlName="weight"/>
+          <span class="text-danger" *ngIf="form.get('weight').touched && form.get('weight').errors?.required">Weight is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="fuelType">Fuel Type</label>
+          <input id="fuelType" name="fuelType" class="form-control" formControlName="fuelType"/>
+          <span class="text-danger" *ngIf="form.get('fuelType').touched && form.get('fuelType').errors?.required">Fuel type is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="transmission">Transmission</label>
+          <input id="transmission" name="transmission" class="form-control" formControlName="transmission"/>
+          <span class="text-danger" *ngIf="form.get('transmission').touched && form.get('transmission').errors?.required">Transmission is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="drivetrain">Drivetrain</label>
+          <input id="drivetrain" name="drivetrain" class="form-control" formControlName="drivetrain"/>
+          <span class="text-danger" *ngIf="form.get('drivetrain').touched && form.get('drivetrain').errors?.required">Drivetrain is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input id="price" name="price" class="form-control" formControlName="price"/>
+          <span class="text-danger" *ngIf="form.get('price').touched && form.get('price').errors?.required">Price is required.</span>
+        </div>
+        <div class="form-group">
+          <label for="yearOfProduction">Year of production</label>
+          <input id="yearOfProduction" name="yearOfProduction" class="form-control" formControlName="yearOfProduction"/>
+          <span class="text-danger" *ngIf="form.get('yearOfProduction').touched && form.get('yearOfProduction').errors?.required">Year of production is required.</span>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="form-group">
+          <p>
+            <a href="javascript:void(0)" routerLink="/home">Return Home</a>
+          </p>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

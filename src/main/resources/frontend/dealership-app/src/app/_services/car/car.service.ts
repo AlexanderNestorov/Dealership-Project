@@ -23,7 +23,7 @@ export class CarService {
     return this.http.get<Car[]>(API_URL + 'all');
   }
 
-  addNewCar(car: Car) : Observable<any> {
+  addNewCar(car: Car) : Observable<Car> {
     return this.http.post<Car>(API_URL + 'add',car,httpOptions);
   }
 
