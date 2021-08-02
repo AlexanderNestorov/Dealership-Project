@@ -26,11 +26,11 @@ import { CreateComponent } from './create/create.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

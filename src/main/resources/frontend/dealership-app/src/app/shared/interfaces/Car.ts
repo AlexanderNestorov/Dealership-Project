@@ -11,7 +11,7 @@ export interface Car{
   fuelType: string;
   transmission: string;
   drivetrain: string;
-  pictures: string[];
   price: number;
   yearOfProduction: number;
+  mainImage: string;
 }

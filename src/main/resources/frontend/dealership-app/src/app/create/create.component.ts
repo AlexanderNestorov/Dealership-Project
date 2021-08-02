@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CarService} from "../_services/car/car.service";
 import {Router} from "@angular/router";
 import {Car} from "../shared/interfaces/Car"
 import {HttpErrorResponse} from "@angular/common/http";
+import {CloudinaryService} from "../_services/shared/cloudinary.service";
+
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
+
 export class CreateComponent implements OnInit {
 
   form: FormGroup;
-  incorrectCredentials = false;
 
-  constructor(private carService: CarService, private router: Router, private fb: FormBuilder) {
+  pictureUrl : string;
+
+  constructor(private carService: CarService, private router: Router,
+              private fb: FormBuilder,private cloudinary: CloudinaryService) {
     this.form = this.fb.group({
       modelName: ["", Validators.required],
       brand: ["", Validators.required],
@@ -29,7 +34,8 @@ export class CreateComponent implements OnInit {
       transmission: ["", Validators.required],
       drivetrain: ["", Validators.required],
       price: ["", Validators.required],
-      yearOfProduction: ["", Validators.required]
+      yearOfProduction: ["", Validators.required],
+      mainImage: ["",Validators.required]
 
     })
   }
@@ -37,9 +43,10 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async loginOnSubmit(formData) {
+  async createOnSubmit(formData) {
     this.carService.addNewCar(formData.value).subscribe(
-      (response: Car) => {
+      (response: Car ) => {
+        console.log(response.id)
         console.log(response);
         formData.reset();
       },
@@ -48,7 +55,12 @@ export class CreateComponent implements OnInit {
         formData.reset();
       }
     );
-
-      await this.router.navigate(["/"]);
+      await this.router.navigateByUrl('/home').finally(() => window.location.reload());
     }
+
+     async uploadPhotoToCloud(fileInput: any) {
+       if (fileInput.target.files && fileInput.target.files[0]) {
+         this.pictureUrl = await this.cloudinary.uploadImage(fileInput.target.files[0]);
+       }
+     }
 }

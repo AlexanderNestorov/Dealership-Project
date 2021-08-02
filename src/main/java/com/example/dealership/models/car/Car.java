@@ -53,15 +53,15 @@ public class Car {
     @Min(value = 1990, message = "No cars produced before 1990 are allowed!")
     private int yearOfProduction;
 
-    @ElementCollection
-    private List<String> pictures = new ArrayList<>();
+    @Column (nullable = false)
+    private String mainImage;
 
     public Car() {
     }
 
     public Car(Long id,String modelName, String brand, String type, int power, int topSpeed,
                int torque, int fuelCapacity, int weight, String fuelType, String transmission,
-               String drivetrain,List<String> pictures,int price, int yearOfProduction) {
+               String drivetrain,String mainImage,int price, int yearOfProduction) {
 
         this.id = id;
         this.modelName = modelName;
@@ -75,9 +75,9 @@ public class Car {
         this.fuelType = fuelType;
         this.transmission = transmission;
         this.drivetrain = drivetrain;
-        this.pictures = pictures;
         this.price = price;
         this.yearOfProduction = yearOfProduction;
+        this.mainImage = mainImage;
     }
 
     public Long getId() {
@@ -192,11 +192,11 @@ public class Car {
         this.yearOfProduction = yearOfProduction;
     }
 
-    public List<String> getPictures() {
-        return pictures;
+    public String getMainImage() {
+        return mainImage;
     }
 
-    public void setPictures(List<String> pictures) {
-        this.pictures = pictures;
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
     }
 }

@@ -2,7 +2,7 @@
   <div  *ngFor="let car of cars" >
     <h1>{{car.modelName}}</h1>
     <div class="picture-container">
-    <img *ngFor="let picture of car['pictures']" src="{{picture}}">
+    <img  src="{{car.mainImage}}">
     </div>
   </div>
 </div>
