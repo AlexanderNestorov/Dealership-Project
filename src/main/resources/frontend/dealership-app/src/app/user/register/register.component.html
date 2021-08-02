@@ -15,6 +15,7 @@
       <div class="form-group">
         <label for="username">Username</label>
         <input
+          id="username"
           type="text"
           class="form-control"
           name="username"
@@ -23,6 +24,7 @@
           minlength="3"
           maxlength="20"
           #username="ngModel"
+          autocomplete="off"
         />
         <div class="alert-danger" *ngIf="username.errors && f.submitted">
           <div *ngIf="username.errors.required">Username is required</div>
@@ -37,6 +39,7 @@
       <div class="form-group">
         <label for="email">Email</label>
         <input
+          id="email"
           type="email"
           class="form-control"
           name="email"
@@ -44,6 +47,7 @@
           required
           email
           #email="ngModel"
+          autocomplete="off"
         />
         <div class="alert-danger" *ngIf="email.errors && f.submitted">
           <div *ngIf="email.errors.required">Email is required</div>
@@ -55,6 +59,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input
+          id="password"
           type="password"
           class="form-control"
           name="password"
@@ -84,3 +89,4 @@
     </div>
   </div>
 </div>
+

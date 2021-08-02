@@ -1,5 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarService} from "../_services/car/car.service";
 import {Router} from "@angular/router";
 import {Car} from "../shared/interfaces/Car"
@@ -16,7 +16,6 @@ import {CloudinaryService} from "../_services/shared/cloudinary.service";
 export class CreateComponent implements OnInit {
 
   form: FormGroup;
-
   pictureUrl : string;
 
   constructor(private carService: CarService, private router: Router,
@@ -63,4 +62,5 @@ export class CreateComponent implements OnInit {
          this.pictureUrl = await this.cloudinary.uploadImage(fileInput.target.files[0]);
        }
      }
-}
+  }
+

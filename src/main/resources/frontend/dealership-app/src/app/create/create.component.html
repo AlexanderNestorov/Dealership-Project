@@ -73,7 +73,7 @@
         <div class="form-group">
           <label for="mainImage">MainImage</label>
           <input id="mainImage" name="mainImage" class="form-control" formControlName="mainImage"[(ngModel)]="pictureUrl" type="url" value="{{pictureUrl}}" readonly>
-          <input id="mainImageURL" type="file" name="mainImage" (change)="uploadPhotoToCloud($event)"/>
+          <input id="mainImageURL" type="file" name="mainImage" (change)="uploadPhotoToCloud($event)" />
           <span class="text-danger" *ngIf="form.get('mainImage').touched && form.get('mainImage').errors?.required">Main image is required.</span>
         </div>
 

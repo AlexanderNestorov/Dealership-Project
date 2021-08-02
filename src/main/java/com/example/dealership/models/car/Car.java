@@ -1,11 +1,16 @@
 package com.example.dealership.models.car;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "cars")
+@EntityListeners(AuditingEntityListener.class)
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,6 +60,12 @@ public class Car {
 
     @Column (nullable = false)
     private String mainImage;
+
+    @CreatedDate
+    private Date createDate;
+
+    @LastModifiedDate
+    private Date updateDate;
 
     public Car() {
     }

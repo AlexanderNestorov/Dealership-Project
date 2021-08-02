@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   cars?: Car[];
   private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showUserBoard = false;
+  hasAdminRole = false;
+  hasUserRole = false;
 
   constructor(private carService: CarService, private tokenStorageService: TokenStorageService) { }
 
@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showUserBoard = this.roles.includes('ROLE_USER');
+      this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
+      this.hasUserRole = this.roles.includes('ROLE_USER');
       this.getCars()
 
     } else {
