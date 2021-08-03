@@ -1,0 +1,11 @@
+<div *ngIf="isLoggedIn" class="container">
+  <h1>Our top picks!</h1>
+  <section  *ngFor="let car of cars" >
+    <h1>{{car.modelName}}</h1>
+    <div class="picture-container">
+    <img  src="{{car.mainImage}}" alt="../../">
+    </div>
+  </section>
+</div>
+
+<app-home-not-found *ngIf="!isLoggedIn"></app-home-not-found>

@@ -7,12 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './user/profile/profile.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import {CoreModule} from "./core/core.module";
+import {CoreModule} from './core/core.module';
 import { CreateComponent } from './create/create.component';
+import {HomeModule} from './home/home.module';
 
 
 @NgModule({

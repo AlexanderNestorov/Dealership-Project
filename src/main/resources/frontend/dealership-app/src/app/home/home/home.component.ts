@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user/user.service';
-import {Car} from "../shared/interfaces/Car";
-import {HttpErrorResponse} from "@angular/common/http";
-import {TokenStorageService} from "../_services/user/token-storage.service";
-import {CarService} from "../_services/car/car.service";
+import { UserService } from '../../_services/user/user.service';
+import {Car} from '../../shared/interfaces/Car';
+import {HttpErrorResponse} from '@angular/common/http';
+import {TokenStorageService} from '../../_services/user/token-storage.service';
+import {CarService} from '../../_services/car/car.service';
 
 @Component({
   selector: 'app-home',
@@ -28,10 +28,10 @@ export class HomeComponent implements OnInit {
 
       this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
       this.hasUserRole = this.roles.includes('ROLE_USER');
-      this.getCars()
+      this.getCars();
 
     } else {
-      this.getRecentCars()
+      this.getRecentCars();
     }
 
   }
@@ -50,12 +50,12 @@ export class HomeComponent implements OnInit {
 
   public getCars(): void {
     this.carService.getAllCars().subscribe(
-      (response:Car[]) => {
+      (response: Car[]) => {
         this.cars = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-    )
+    );
   }
 }
