@@ -2,6 +2,7 @@ package com.example.dealership.controllers;
 
 import com.example.dealership.models.car.Car;
 import com.example.dealership.services.CarService;
+import com.example.dealership.services.PictureService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,11 @@ import java.util.List;
 @RequestMapping("/api/car")
 public class CarController {
     private final CarService carService;
+    private final PictureService pictureService;
 
-    public CarController(CarService carService) {
+    public CarController(CarService carService, PictureService pictureService) {
         this.carService = carService;
+        this.pictureService = pictureService;
     }
 
 

@@ -71,11 +71,26 @@
         </div>
 
         <div class="form-group">
-          <label for="mainImage">MainImage</label>
+          <label for="mainImage">Main Image</label>
           <input id="mainImage" name="mainImage" class="form-control" formControlName="mainImage"[(ngModel)]="pictureUrl" type="url" value="{{pictureUrl}}" readonly>
           <input id="mainImageURL" type="file" name="mainImage" (change)="uploadPhotoToCloud($event)" />
           <span class="text-danger" *ngIf="form.get('mainImage').touched && form.get('mainImage').errors?.required">Main image is required.</span>
         </div>
+
+        <div class="form-group">
+          <label for="secondImage">Second Image</label>
+          <input id="secondImage" name="secondImage" class="form-control" formControlName="secondImage"[(ngModel)]="secondPicture" type="url" value="{{secondPicture}}" readonly>
+          <input id="secondImageURL" type="file" name="secondImage" (change)="uploadSecondPhotoToCloud($event)" />
+          <span class="text-danger" *ngIf="form.get('secondImage').touched && form.get('secondImage').errors?.required">Second image is required.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="thirdImage">Third Image</label>
+          <input id="thirdImage" name="thirdImage" class="form-control" formControlName="thirdImage"[(ngModel)]="thirdPicture" type="url" value="{{thirdPicture}}" readonly>
+          <input id="thirdImageURL" type="file" name="thirdImage" (change)="uploadThirdPhotoToCloud($event)" />
+          <span class="text-danger" *ngIf="form.get('thirdImage').touched && form.get('thirdImage').errors?.required">Third image is required.</span>
+        </div>
+
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,17 +1,20 @@
 package com.example.dealership.models.car;
+import com.example.dealership.models.picture.BonusPicture;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "cars")
 @EntityListeners(AuditingEntityListener.class)
-public class Car {
+public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,updatable = false,unique = true)
@@ -66,6 +69,10 @@ public class Car {
 
     @LastModifiedDate
     private Date updateDate;
+
+    @OneToMany(mappedBy = "car_id", fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
+    private Set<BonusPicture> bonusPictures;
 
     public Car() {
     }
@@ -209,5 +216,13 @@ public class Car {
 
     public void setMainImage(String mainImage) {
         this.mainImage = mainImage;
+    }
+
+    public Set<BonusPicture> getBonusPictures() {
+        return bonusPictures;
+    }
+
+    public void setBonusPictures(Set<BonusPicture> bonusPictures) {
+        this.bonusPictures = bonusPictures;
     }
 }
