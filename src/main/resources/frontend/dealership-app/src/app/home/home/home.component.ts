@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../_services/user/user.service';
+import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
+
 import {Car} from '../../shared/interfaces/Car';
 import {HttpErrorResponse} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
@@ -10,7 +10,8 @@ import {CarService} from '../../_services/car/car.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+
+export class HomeComponent implements OnInit, AfterContentInit{
   cars?: Car[];
   private roles: string[] = [];
   isLoggedIn = false;
@@ -35,6 +36,10 @@ export class HomeComponent implements OnInit {
     }
 
   }
+
+  ngAfterContentInit(): void {
+   }
+
 
   public getRecentCars(): void {
     this.carService.getRecentCars().subscribe(

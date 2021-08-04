@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CarService} from '../_services/car/car.service';
 import {Router} from '@angular/router';
@@ -16,7 +16,6 @@ import {Picture} from '../shared/interfaces/Picture';
 })
 
 export class CreateComponent implements OnInit {
-
   form: FormGroup;
   pictureUrl: string;
   secondPicture: string;
@@ -47,6 +46,7 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
    async createOnSubmit(formData: any): Promise<any>{
     this.carService.addNewCar(formData.value).subscribe(
       response => {
