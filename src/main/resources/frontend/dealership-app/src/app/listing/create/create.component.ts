@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CloudinaryService} from '../../_services/cloudinary/cloudinary.service';
 import {PictureService} from '../../_services/picture/picture.service';
+import {TokenStorageService} from '../../_services/user/token-storage.service';
 
 
 @Component({
@@ -19,9 +20,12 @@ export class CreateComponent implements OnInit {
   pictureUrl: string;
   secondPicture: string;
   thirdPicture: string;
+  currentUser: any;
+  author: string;
 
   constructor(private carService: CarService, private router: Router,
-              private fb: FormBuilder, private cloudinary: CloudinaryService, private pictureService: PictureService) {
+              private fb: FormBuilder, private cloudinary: CloudinaryService,
+              private pictureService: PictureService, private tokenStorage: TokenStorageService) {
     this.form = this.fb.group({
       modelName: ['', Validators.required],
       brand: ['', Validators.required],
@@ -38,12 +42,15 @@ export class CreateComponent implements OnInit {
       yearOfProduction: ['', Validators.required],
       mainImage: ['', Validators.required],
       secondImage: ['', Validators.required],
-      thirdImage: ['', Validators.required]
-
+      thirdImage: ['', Validators.required],
+      author: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorage.getUser();
+    this.author = this.currentUser.username;
+    console.log(this.form);
   }
 
    async createOnSubmit(formData: any): Promise<any>{

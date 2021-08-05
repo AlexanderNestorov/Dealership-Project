@@ -67,8 +67,8 @@ public class Car implements Serializable {
     @CreatedDate
     private Date createDate;
 
-    @LastModifiedDate
-    private Date updateDate;
+    @Column(nullable = false)
+    private String author;
 
     @OneToMany(mappedBy = "car_id", fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
@@ -79,7 +79,7 @@ public class Car implements Serializable {
 
     public Car(Long id,String modelName, String brand, String type, int power, int topSpeed,
                int torque, int fuelCapacity, int weight, String fuelType, String transmission,
-               String drivetrain,String mainImage,int price, int yearOfProduction) {
+               String drivetrain,String mainImage,int price, int yearOfProduction, String author) {
 
         this.id = id;
         this.modelName = modelName;
@@ -96,6 +96,7 @@ public class Car implements Serializable {
         this.price = price;
         this.yearOfProduction = yearOfProduction;
         this.mainImage = mainImage;
+        this.author = author;
     }
 
     public Long getId() {
@@ -224,5 +225,13 @@ public class Car implements Serializable {
 
     public void setBonusPictures(Set<BonusPicture> bonusPictures) {
         this.bonusPictures = bonusPictures;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

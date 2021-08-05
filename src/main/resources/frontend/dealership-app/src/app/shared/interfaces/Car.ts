@@ -14,4 +14,5 @@ export interface Car{
   price: number;
   yearOfProduction: number;
   mainImage: string;
+  author: string;
 }

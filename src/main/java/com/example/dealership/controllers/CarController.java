@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/car")
@@ -19,7 +18,6 @@ public class CarController {
     public CarController(CarService carService) {
         this.carService = carService;
     }
-
 
     @GetMapping("/all")
     public ResponseEntity<List<Car>> getAllCars() {
@@ -45,7 +43,7 @@ public class CarController {
     public ResponseEntity<Car> updateCar(@RequestBody Car car) {
         Car updateCar = this.carService.updateCar(car);
 
-        return new ResponseEntity<>(updateCar,HttpStatus.OK);
+        return new ResponseEntity<>(updateCar, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

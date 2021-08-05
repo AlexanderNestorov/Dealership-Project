@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_services/user/auth.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {rePasswordValidator} from '../../shared/validators.js';
-import {TokenStorageService} from '../../_services/user/token-storage.service';
+import {emailValidator, rePasswordValidator} from '../../shared/validators.js';
+
 
 @Component({
   selector: 'app-register',
@@ -20,11 +20,11 @@ export class RegisterComponent implements OnInit {
   isLoginFailed = false;
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private tokenStorageService: TokenStorageService) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
     this.passwordControl = this.fb.control('', [Validators.required, Validators.minLength(6)]);
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, emailValidator]],
       password: this.passwordControl,
       rePassword: ['', rePasswordValidator(this.passwordControl)]
     });

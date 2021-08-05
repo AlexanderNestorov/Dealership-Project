@@ -20,8 +20,6 @@ public class PictureController {
         this.carService = carService;
         this.pictureService = pictureService;
     }
-
-
     @GetMapping("/all")
     public ResponseEntity<List<BonusPicture>> getAllPictures() {
         List<BonusPicture> pictures = this.pictureService.findAllPictures();
@@ -46,7 +44,7 @@ public class PictureController {
     public ResponseEntity<BonusPicture> updatePicture(@RequestBody BonusPicture picture) {
         BonusPicture updatePicture = this.pictureService.updatePicture(picture);
 
-        return new ResponseEntity<>(updatePicture,HttpStatus.OK);
+        return new ResponseEntity<>(updatePicture, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
