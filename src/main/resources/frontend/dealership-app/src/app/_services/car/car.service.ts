@@ -15,8 +15,8 @@ const httpOptions = {
 export class CarService {
   constructor(private http: HttpClient) { }
 
-  getRecentCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(  API_URL + 'recent');
+  getCarsByPrice(): Observable<Car[]> {
+    return this.http.get<Car[]>(  API_URL + 'by_price');
   }
 
   getAllCars(): Observable<Car[]> {

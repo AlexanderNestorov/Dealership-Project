@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/user/token-storage.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -36,16 +36,16 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
-    window.alert("Logged out!")
+    window.alert('Logged out!');
   }
 
   test(event): void {
     if (!this.isLoggedIn) {
       event.preventDefault();
-      window.alert("To see this page, please Log In.");
+      window.alert('To see this page, please Log In.');
       return;
          }
-    this.router.navigateByUrl("/profile")
+    this.router.navigateByUrl('/profile');
 
 
 

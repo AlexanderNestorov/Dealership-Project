@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CarService} from '../_services/car/car.service';
+import {CarService} from '../../_services/car/car.service';
 import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
-import {CloudinaryService} from '../_services/shared/cloudinary.service';
-import {PictureService} from '../_services/picture/picture.service';
+import {CloudinaryService} from '../../_services/cloudinary/cloudinary.service';
+import {PictureService} from '../../_services/picture/picture.service';
 
 
 @Component({

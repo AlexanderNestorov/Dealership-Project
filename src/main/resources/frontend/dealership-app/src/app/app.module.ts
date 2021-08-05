@@ -12,8 +12,9 @@ import { ProfileComponent } from './user/profile/profile.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import {CoreModule} from './core/core.module';
-import { CreateComponent } from './create/create.component';
+import { CreateComponent } from './listing/create/create.component';
 import {HomeModule} from './home/home.module';
+import {ListingModule} from './listing/listing.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {HomeModule} from './home/home.module';
     HttpClientModule,
     CoreModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ListingModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

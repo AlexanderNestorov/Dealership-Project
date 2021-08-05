@@ -1,14 +1,4 @@
 <app-header></app-header>
-<div *ngIf="isLoggedIn" class="container">
-  <h1>Our top picks!</h1>
-  <section  *ngFor="let car of cars" >
-    <h2>{{car.modelName}}</h2>
-    <div class="picture-container">
-    <img  src="{{car.mainImage}}" alt="../../../assets/99776312-error-404-page-not-found-error-with-glitch-effect-on-screen-vector-illustration-for-your-design.jpg">
-    </div>
-  </section>
-</div>
-
+<app-listing-home *ngIf="isLoggedIn"></app-listing-home>
 <app-home-not-found *ngIf="!isLoggedIn"></app-home-not-found>
-
 <app-footer></app-footer>

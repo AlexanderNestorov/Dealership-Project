@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
+  // tslint:disable-next-line:max-line-length
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private fb: FormBuilder) {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
 
-        this.router.navigateByUrl('/home').finally(() => this.reloadPage());
+        this.router.navigateByUrl('/home').then(() => this.reloadPage());
       },
       err => {
         this.errorMessage = err.error.message;

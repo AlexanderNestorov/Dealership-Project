@@ -15,11 +15,9 @@ import java.util.List;
 @RequestMapping("/api/car")
 public class CarController {
     private final CarService carService;
-    private final PictureService pictureService;
 
-    public CarController(CarService carService, PictureService pictureService) {
+    public CarController(CarService carService) {
         this.carService = carService;
-        this.pictureService = pictureService;
     }
 
 
@@ -57,8 +55,8 @@ public class CarController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/recent")
-    public ResponseEntity<List<Car>> importCars() {
+    @GetMapping("/by_price")
+    public ResponseEntity<List<Car>> getCarsByPrice() {
         List<Car> cars = this.carService.findAllCarsByPriceDesc();
 
         return new ResponseEntity<>(cars, HttpStatus.OK);
