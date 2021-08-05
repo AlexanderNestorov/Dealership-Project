@@ -11,6 +11,7 @@ import {NotFoundComponent} from './core/not-found/not-found.component';
 import {CoreModule} from './core/core.module';
 import {HomeNotFoundComponent} from './home/home-not-found/home-not-found.component';
 import {RegisterLoginComponent} from './user/register-login/register-login.component';
+import {ListingAllComponent} from './listing/listing-all/listing-all.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'add', component: CreateComponent},
   { path: 'registered', component: RegisterLoginComponent, pathMatch: 'full'},
+  { path: 'all', component: ListingAllComponent, pathMatch: 'full'},
   { path: '**', component : NotFoundComponent, pathMatch: 'full' }
 ];
 

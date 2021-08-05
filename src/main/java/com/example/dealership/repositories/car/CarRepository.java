@@ -15,7 +15,7 @@ public interface CarRepository extends JpaRepository<Car,Long> {
     void deleteCarById(Long id);
 
     @Query(
-            value = "SELECT * from cars c ORDER BY c.price desc limit 5",
+            value = "SELECT * from cars c ORDER BY c.price desc limit 6",
             nativeQuery = true
     )
     List<Car> findCarsByPrice();
