@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  componentName: string;
   private roles: string[] = [];
     isLoggedIn = false;
     showAdminBoard = false;
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
       this.isLoggedIn = !!this.tokenStorageService.getToken();
+      this.componentName = this.constructor.name;
 
       if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();

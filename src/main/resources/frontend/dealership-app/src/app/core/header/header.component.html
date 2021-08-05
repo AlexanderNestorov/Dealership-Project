@@ -2,33 +2,37 @@
   <a href="#" class="navbar-brand">Dealership</a>
   <ul class="navbar-nav mr-auto" routerLinkActive="active">
     <li class="nav-item">
-      <a href="/home" class="nav-link" routerLink="home">Home </a>
+      <a href="/home" class="nav-link" >Home </a>
     </li>
     <li class="nav-item">
       <a href="/profile" class="nav-link" (click)="test($event)">Test </a>
     </li>
 
     <li class="nav-item" *ngIf="showAdminBoard">
-      <a href="/add" class="nav-link" >New Listing </a>
+      <a href="/add"  class="nav-link" >New Listing </a>
+    </li>
+
+    <li class="nav-item" *ngIf="componentName != 'AboutComponent'">
+      <a href="/home/about"  class="nav-link" >About Us</a>
     </li>
   </ul>
 
 
   <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
     <li class="nav-item">
-      <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      <a href="/register" class="nav-link">Sign Up</a>
     </li>
     <li class="nav-item">
-      <a href="/login" class="nav-link" routerLink="login">Login</a>
+      <a href="/login" class="nav-link">Login</a>
     </li>
   </ul>
 
   <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
     <li class="nav-item">
-      <a href="/all" class="nav-link" routerLink="all">All</a>
+      <a href="/all" class="nav-link" >All</a>
     </li>
     <li class="nav-item">
-      <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      <a href="/profile" class="nav-link" >{{ username }}</a>
     </li>
     <li class="nav-item">
       <a href class="nav-link" (click)="logout()">LogOut</a>
