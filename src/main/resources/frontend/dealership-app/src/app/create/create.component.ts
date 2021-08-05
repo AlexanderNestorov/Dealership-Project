@@ -1,18 +1,17 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CarService} from '../_services/car/car.service';
 import {Router} from '@angular/router';
-import {Car} from '../shared/interfaces/Car';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CloudinaryService} from '../_services/shared/cloudinary.service';
 import {PictureService} from '../_services/picture/picture.service';
-import {Picture} from '../shared/interfaces/Picture';
 
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class CreateComponent implements OnInit {
