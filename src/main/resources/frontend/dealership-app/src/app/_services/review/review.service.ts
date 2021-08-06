@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Picture} from '../../shared/interfaces/Picture';
+import {Review} from '../../shared/interfaces/Review';
 
-const API_URL = 'http://localhost:8080/api/picture/';
+const API_URL = 'http://localhost:8080/api/review/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,17 +12,17 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PictureService {
+export class ReviewService {
   constructor(private http: HttpClient) { }
-  getAllPictures(): Observable<Picture[]> {
-    return this.http.get<Picture[]>(API_URL + 'all');
+  getAllPictures(): Observable<Review[]> {
+    return this.http.get<Review[]>(API_URL + 'all');
   }
-  addNewPicture(picture: Picture): Observable<Picture> {
-    return this.http.post<Picture>(API_URL + 'add', picture, httpOptions);
+  addNewPicture(review: Review): Observable<Review> {
+    return this.http.post<Review>(API_URL + 'add', review, httpOptions);
   }
   getAllPicturesById(id: number) {
     const httpParams = new HttpParams().set('id', String(id));
-    return this.http.get<Picture[]>(API_URL + 'bycar' + id, {
+    return this.http.get<Review[]>(API_URL + 'bycar' + id, {
       params: httpParams
     } );
   }

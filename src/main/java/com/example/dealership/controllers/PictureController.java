@@ -13,11 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/picture")
 public class PictureController {
-    private final CarService carService;
     private final PictureService pictureService;
 
-    public PictureController(CarService carService, PictureService pictureService) {
-        this.carService = carService;
+    public PictureController(PictureService pictureService) {
         this.pictureService = pictureService;
     }
     @GetMapping("/all")
@@ -54,10 +52,10 @@ public class PictureController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @GetMapping("/recent")
-//    public ResponseEntity<List<Car>> importCars() {
-//        List<Car> cars = this.carService.findAllCarsByPriceDesc();
-//
-//        return new ResponseEntity<>(cars, HttpStatus.OK);
-//    }
+    @GetMapping("/bycar{id}")
+    public ResponseEntity<List<BonusPicture>> getPicturesByCar(@PathVariable("id") Long id) {
+        List<BonusPicture> pictures = this.pictureService.findAllPicturesByCar(id);
+
+        return new ResponseEntity<>(pictures, HttpStatus.OK);
+    }
 }

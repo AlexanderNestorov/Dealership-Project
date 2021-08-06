@@ -1,6 +1,6 @@
 package com.example.dealership.services;
 
-import com.example.dealership.exceptions.CarNotFoundException;
+import com.example.dealership.exceptions.ItemNotFoundException;
 import com.example.dealership.models.car.Car;
 import com.example.dealership.repositories.car.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class CarService {
 
     public Car findCarById(Long id) {
         return carRepository.findCarById(id)
-                .orElseThrow(() -> new CarNotFoundException("Car with id " + id + " was not found"));
+                .orElseThrow(() -> new ItemNotFoundException("Car with id " + id + " was not found"));
     }
 
     public void deleteCar(Long id) {

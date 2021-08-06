@@ -26,6 +26,7 @@ export class ListingAllComponent implements OnInit {
       this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
       this.hasUserRole = this.roles.includes('ROLE_USER');
       this.getCars();
+      console.log(this.cars);
     }
   }
 

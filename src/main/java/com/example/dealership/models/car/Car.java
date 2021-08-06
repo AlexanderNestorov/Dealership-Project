@@ -1,14 +1,14 @@
 package com.example.dealership.models.car;
-import com.example.dealership.models.picture.BonusPicture;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+
 
 
 @Entity
@@ -70,16 +70,12 @@ public class Car implements Serializable {
     @Column(nullable = false)
     private String author;
 
-    @OneToMany(mappedBy = "car_id", fetch = FetchType.LAZY,
-    cascade = CascadeType.ALL)
-    private Set<BonusPicture> bonusPictures;
-
     public Car() {
     }
 
     public Car(Long id,String modelName, String brand, String type, int power, int topSpeed,
                int torque, int fuelCapacity, int weight, String fuelType, String transmission,
-               String drivetrain,String mainImage,int price, int yearOfProduction, String author) {
+               String drivetrain,String mainImage,int price, int yearOfProduction,Date createDate, String author) {
 
         this.id = id;
         this.modelName = modelName;
@@ -96,6 +92,7 @@ public class Car implements Serializable {
         this.price = price;
         this.yearOfProduction = yearOfProduction;
         this.mainImage = mainImage;
+        this.createDate = createDate;
         this.author = author;
     }
 
@@ -219,12 +216,13 @@ public class Car implements Serializable {
         this.mainImage = mainImage;
     }
 
-    public Set<BonusPicture> getBonusPictures() {
-        return bonusPictures;
+
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setBonusPictures(Set<BonusPicture> bonusPictures) {
-        this.bonusPictures = bonusPictures;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getAuthor() {
@@ -234,4 +232,5 @@ public class Car implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }
