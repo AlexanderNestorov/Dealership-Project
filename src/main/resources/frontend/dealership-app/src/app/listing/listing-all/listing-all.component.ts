@@ -15,6 +15,7 @@ export class ListingAllComponent implements OnInit {
   isLoggedIn = false;
   hasAdminRole = false;
   hasUserRole = false;
+  length: number;
 
   constructor(private carService: CarService, private tokenStorageService: TokenStorageService) { }
 
@@ -26,7 +27,6 @@ export class ListingAllComponent implements OnInit {
       this.hasAdminRole = this.roles.includes('ROLE_ADMIN');
       this.hasUserRole = this.roles.includes('ROLE_USER');
       this.getCars();
-      console.log(this.cars);
     }
   }
 
@@ -34,6 +34,7 @@ export class ListingAllComponent implements OnInit {
     this.carService.getAllCars().subscribe(
       (response: Car[]) => {
         this.cars = response;
+        this.length = this.cars.length;
 
       },
       (error: HttpErrorResponse) => {

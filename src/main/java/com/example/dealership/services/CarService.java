@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -34,6 +35,7 @@ public class CarService {
         return carRepository.findCarById(id)
                 .orElseThrow(() -> new ItemNotFoundException("Car with id " + id + " was not found"));
     }
+
 
     public void deleteCar(Long id) {
         carRepository.deleteCarById(id);

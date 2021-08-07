@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class BonusPicture implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false,updatable = false,unique = true)
     private Long id;
 

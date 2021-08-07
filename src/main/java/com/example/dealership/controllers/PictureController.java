@@ -38,7 +38,7 @@ public class PictureController {
         return new ResponseEntity<>(picture, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PatchMapping("/update")
     public ResponseEntity<BonusPicture> updatePicture(@RequestBody BonusPicture picture) {
         BonusPicture updatePicture = this.pictureService.updatePicture(picture);
 

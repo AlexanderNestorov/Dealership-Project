@@ -15,6 +15,7 @@ import {CoreModule} from './core/core.module';
 import { CreateComponent } from './listing/create/create.component';
 import {HomeModule} from './home/home.module';
 import {ListingModule} from './listing/listing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {ListingModule} from './listing/listing.module';
     CoreModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    ListingModule
+    ListingModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

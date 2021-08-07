@@ -6,7 +6,7 @@ import {Car} from '../../shared/interfaces/Car';
 const API_URL = 'http://localhost:8080/api/car/';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Access-Control-Allow-Origin' : '*', 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -26,4 +26,13 @@ export class CarService {
   addNewCar(car: Car): Observable<Car> {
     return this.http.post<Car>(API_URL + 'add', car, httpOptions);
   }
+
+   updateCar(car: Car): Observable<Car> {
+    return this.http.put<Car>(API_URL + 'update', car, httpOptions);
+  }
+
+  public deleteCar(carId: number): Observable<void> {
+    return this.http.delete<void>(API_URL + `delete/${carId}`, httpOptions);
+  }
+
 }

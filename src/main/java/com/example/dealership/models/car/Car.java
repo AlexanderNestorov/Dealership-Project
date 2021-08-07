@@ -16,7 +16,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class Car implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false,updatable = false,unique = true)
     private Long id;
 
@@ -64,6 +64,12 @@ public class Car implements Serializable {
     @Column (nullable = false)
     private String mainImage;
 
+    @Column (nullable = false)
+    private String secondImage;
+
+    @Column (nullable = false)
+    private String thirdImage;
+
     @CreatedDate
     private Date createDate;
 
@@ -75,7 +81,8 @@ public class Car implements Serializable {
 
     public Car(Long id,String modelName, String brand, String type, int power, int topSpeed,
                int torque, int fuelCapacity, int weight, String fuelType, String transmission,
-               String drivetrain,String mainImage,int price, int yearOfProduction,Date createDate, String author) {
+               String drivetrain,String mainImage,int price, int yearOfProduction,Date createDate,
+               String author, String secondImage, String thirdImage) {
 
         this.id = id;
         this.modelName = modelName;
@@ -94,6 +101,8 @@ public class Car implements Serializable {
         this.mainImage = mainImage;
         this.createDate = createDate;
         this.author = author;
+        this.secondImage = secondImage;
+        this.thirdImage = thirdImage;
     }
 
     public Long getId() {
@@ -233,4 +242,19 @@ public class Car implements Serializable {
         this.author = author;
     }
 
+    public String getSecondImage() {
+        return secondImage;
+    }
+
+    public void setSecondImage(String secondImage) {
+        this.secondImage = secondImage;
+    }
+
+    public String getThirdImage() {
+        return thirdImage;
+    }
+
+    public void setThirdImage(String thirdImage) {
+        this.thirdImage = thirdImage;
+    }
 }

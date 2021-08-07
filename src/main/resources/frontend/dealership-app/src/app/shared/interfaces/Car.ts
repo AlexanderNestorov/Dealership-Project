@@ -15,5 +15,6 @@ export interface Car{
   yearOfProduction: number;
   mainImage: string;
   author: string;
-  reviews: string[];
+  secondImage: string;
+  thirdImage: string;
 }

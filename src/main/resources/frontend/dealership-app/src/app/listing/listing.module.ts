@@ -4,6 +4,7 @@ import { ListingHomeComponent } from './listing-home/listing-home.component';
 import { ListingAllComponent } from './listing-all/listing-all.component';
 import { ListingItemComponent } from './listing-item/listing-item.component';
 import {CoreModule} from '../core/core.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -16,9 +17,11 @@ import {CoreModule} from '../core/core.module';
     exports: [
         ListingHomeComponent
     ],
-  imports: [
-    CommonModule,
-    CoreModule
-  ]
+    imports: [
+        CommonModule,
+        CoreModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class ListingModule { }

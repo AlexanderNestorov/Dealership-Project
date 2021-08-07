@@ -2,7 +2,6 @@ package com.example.dealership.controllers;
 
 import com.example.dealership.models.car.Car;
 import com.example.dealership.services.CarService;
-import com.example.dealership.services.PictureService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +38,7 @@ public class CarController {
         return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping ("/update")
     public ResponseEntity<Car> updateCar(@RequestBody Car car) {
         Car updateCar = this.carService.updateCar(car);
 
