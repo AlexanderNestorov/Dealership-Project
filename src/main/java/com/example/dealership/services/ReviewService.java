@@ -1,7 +1,6 @@
 package com.example.dealership.services;
 
 import com.example.dealership.exceptions.ItemNotFoundException;
-import com.example.dealership.models.picture.BonusPicture;
 import com.example.dealership.models.review.Review;
 import com.example.dealership.repositories.review.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;

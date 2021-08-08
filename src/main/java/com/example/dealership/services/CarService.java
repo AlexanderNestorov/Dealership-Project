@@ -44,4 +44,8 @@ public class CarService {
     public List<Car> findAllCarsByPriceDesc() {
         return this.carRepository.findCarsByPrice();
     }
+
+    public List<Car> findAllCarsByAuthor(String name) {
+        return this.carRepository.findAllByAuthor(name);
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.dealership.repositories.review;
 
-import com.example.dealership.models.picture.BonusPicture;
 import com.example.dealership.models.review.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

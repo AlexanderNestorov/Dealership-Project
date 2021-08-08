@@ -20,56 +20,70 @@
           <label for="type">Type</label>
           <input id="type" name="type" class="form-control" formControlName="type"/>
           <span class="text-danger" *ngIf="form.get('type').touched && form.get('type').errors?.required">Type is required.</span>
+          <span class="text-danger" *ngIf="form.get('type').touched && form.get('type').errors?.invalidType">Type must be one of the following:
+             SUV, Sedan, Hatchback, Coupe, Truck or Smart!</span>
         </div>
         <div class="form-group text">
           <label for="power">Power</label>
-          <input id="power" name="power" class="form-control" formControlName="power"/>
+          <input id="power" type="number" name="power" class="form-control" formControlName="power"/>
           <span class="text-danger" *ngIf="form.get('power').touched && form.get('power').errors?.required">Power is required.</span>
+          <span class="text-danger" *ngIf="form.get('power').touched && form.get('power').errors?.min">Power must be at least 50 Hp!</span>
         </div>
         <div class="form-group text">
           <label for="topSpeed">Top Speed</label>
-          <input id="topSpeed" name="topSpeed" class="form-control" formControlName="topSpeed"/>
+          <input id="topSpeed" type="number" name="topSpeed" class="form-control" formControlName="topSpeed"/>
           <span class="text-danger" *ngIf="form.get('topSpeed').touched && form.get('topSpeed').errors?.required">Top speed is required.</span>
+          <span class="text-danger" *ngIf="form.get('topSpeed').touched && form.get('topSpeed').errors?.min">Top speed must be at least 60 Kmh!</span>
         </div>
         <div class="form-group text">
           <label for="torque">Torque</label>
-          <input id="torque" name="torque" class="form-control" formControlName="torque"/>
+          <input id="torque" type="number" name="torque" class="form-control" formControlName="torque"/>
           <span class="text-danger" *ngIf="form.get('torque').touched && form.get('torque').errors?.required">Torque is required.</span>
+          <span class="text-danger" *ngIf="form.get('torque').touched && form.get('torque').errors?.min">Torque must be at least 100 Nm</span>
         </div>
         <div class="form-group text">
           <label for="fuelCapacity">Fuel Capacity</label>
-          <input id="fuelCapacity" name="fuelCapacity" class="form-control" formControlName="fuelCapacity"/>
+          <input id="fuelCapacity" type="number" name="fuelCapacity" class="form-control" formControlName="fuelCapacity"/>
           <span class="text-danger" *ngIf="form.get('fuelCapacity').touched && form.get('fuelCapacity').errors?.required">Fuel capacity is required.</span>
+          <span class="text-danger" *ngIf="form.get('fuelCapacity').touched && form.get('fuelCapacity').errors?.min">Fuel capacity must be at least 20 litres!</span>
         </div>
         <div class="form-group text">
           <label for="weight">Weight</label>
-          <input id="weight" name="weight" class="form-control" formControlName="weight"/>
+          <input id="weight" type="number" name="weight" class="form-control" formControlName="weight"/>
           <span class="text-danger" *ngIf="form.get('weight').touched && form.get('weight').errors?.required">Weight is required.</span>
+          <span class="text-danger" *ngIf="form.get('weight').touched && form.get('weight').errors?.min">Weight must be at least 1000 kg!</span>
         </div>
         <div class="form-group text">
           <label for="fuelType">Fuel Type</label>
           <input id="fuelType" name="fuelType" class="form-control" formControlName="fuelType"/>
           <span class="text-danger" *ngIf="form.get('fuelType').touched && form.get('fuelType').errors?.required">Fuel type is required.</span>
+          <span class="text-danger" *ngIf="form.get('fuelType').touched && form.get('fuelType').errors?.invalidFuelType">Fuel type must be one of the following:
+             Petrol, Diesel or Hybrid!</span>
         </div>
         <div class="form-group text">
           <label for="transmission">Transmission</label>
           <input id="transmission" name="transmission" class="form-control" formControlName="transmission"/>
           <span class="text-danger" *ngIf="form.get('transmission').touched && form.get('transmission').errors?.required">Transmission is required.</span>
+          <span class="text-danger" *ngIf="form.get('transmission').touched && form.get('transmission').errors?.invalidTransmission">Transmission must be Automatic or Manual.</span>
         </div>
         <div class="form-group text">
           <label for="drivetrain">Drivetrain</label>
           <input id="drivetrain" name="drivetrain" class="form-control" formControlName="drivetrain"/>
           <span class="text-danger" *ngIf="form.get('drivetrain').touched && form.get('drivetrain').errors?.required">Drivetrain is required.</span>
+          <span class="text-danger" *ngIf="form.get('drivetrain').touched && form.get('drivetrain').errors?.invalidDrivetrain">Drivetrain must be one of the following:
+            AWD, RWD or FWD.</span>
         </div>
         <div class="form-group text">
           <label for="price">Price</label>
-          <input id="price" name="price" class="form-control" formControlName="price"/>
+          <input id="price" type="number" name="price" class="form-control" formControlName="price"/>
           <span class="text-danger" *ngIf="form.get('price').touched && form.get('price').errors?.required">Price is required.</span>
+          <span class="text-danger" *ngIf="form.get('price').touched && form.get('price').errors?.min">Price must be above 500$!</span>
         </div>
         <div class="form-group text">
           <label for="yearOfProduction">Year of production</label>
-          <input id="yearOfProduction" name="yearOfProduction" class="form-control" formControlName="yearOfProduction"/>
+          <input type="number" id="yearOfProduction" name="yearOfProduction" class="form-control" formControlName="yearOfProduction"/>
           <span class="text-danger" *ngIf="form.get('yearOfProduction').touched && form.get('yearOfProduction').errors?.required">Year of production is required.</span>
+          <span class="text-danger" *ngIf="form.get('yearOfProduction').touched && form.get('yearOfProduction').errors?.min">Year of production must be after 1990!</span>
         </div>
 
         <div class="form-group text">

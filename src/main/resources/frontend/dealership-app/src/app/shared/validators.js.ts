@@ -14,3 +14,31 @@ export function rePasswordValidator(getTargetControl: AbstractControl): Validato
     return areTheSame ? null : {rePasswordValidator: true};
   };
 }
+
+export function drivetrainValidator(control: AbstractControl): ValidationErrors | null {
+  if (!control.value) { return null; }
+  return /(AWD|RWD|FWD)$/.test(control.value) ? null : {
+    invalidDrivetrain: true
+  };
+}
+
+export function transmissionValidator(control: AbstractControl): ValidationErrors | null {
+  if (!control.value) { return null; }
+  return /(Automatic|Manual)$/.test(control.value) ? null : {
+    invalidTransmission: true
+  };
+}
+
+export function fuelTypeValidator(control: AbstractControl): ValidationErrors | null {
+  if (!control.value) { return null; }
+  return /(Petrol|Diesel|Hybrid)$/.test(control.value) ? null : {
+    invalidFuelType: true
+  };
+}
+
+export function carTypeValidator(control: AbstractControl): ValidationErrors | null {
+  if (!control.value) { return null; }
+  return /(SUV|Sedan|Hatchback|Coupe|Truck|Smart)$/.test(control.value) ? null : {
+    invalidType: true
+  };
+}

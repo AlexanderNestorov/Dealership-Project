@@ -3,6 +3,7 @@ import { AuthService } from '../../_services/user/auth.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {emailValidator, rePasswordValidator} from '../../shared/validators.js';
+import {TokenStorageService} from '../../_services/user/token-storage.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   isLoginFailed = false;
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService, private fb: FormBuilder,
+              private router: Router, private tokenStorageService: TokenStorageService) {
     this.passwordControl = this.fb.control('', [Validators.required, Validators.minLength(6)]);
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
@@ -38,7 +40,18 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(username, email, password).subscribe(
       data => {
-        this.router.navigateByUrl('/registered').then(() => this.reloadPage());
+        this.authService.login(username, password).subscribe(
+          data2 => {
+            this.tokenStorageService.saveToken(data2.accessToken);
+            this.tokenStorageService.saveUser(data2);
+            console.log(data2);
+            this.router.navigate(['/home']).then(() => this.reloadPage());
+          },
+          error => {
+            this.errorMessage = error.error.message;
+            this.isSignUpFailed = true;
+          }
+        );
       },
       err => {
         this.errorMessage = err.error.message;

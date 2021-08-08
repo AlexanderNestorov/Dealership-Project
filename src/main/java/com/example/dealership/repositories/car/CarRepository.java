@@ -19,4 +19,11 @@ public interface CarRepository extends JpaRepository<Car,Long> {
             nativeQuery = true
     )
     List<Car> findCarsByPrice();
+
+    @Query(
+            value = "SELECT * from cars c WHERE c.author = ?1",
+            nativeQuery = true
+    )
+    List<Car> findAllByAuthor(String name);
+
 }

@@ -58,4 +58,11 @@ public class CarController {
 
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
+
+    @GetMapping("/byuser{user}")
+    public ResponseEntity<List<Car>> getCarsByUser(@PathVariable("user") String name) {
+        List<Car> pictures = this.carService.findAllCarsByAuthor(name);
+
+        return new ResponseEntity<>(pictures, HttpStatus.OK);
+    }
 }

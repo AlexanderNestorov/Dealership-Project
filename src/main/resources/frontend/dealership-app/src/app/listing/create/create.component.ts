@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CloudinaryService} from '../../_services/cloudinary/cloudinary.service';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
+import {carTypeValidator, drivetrainValidator, fuelTypeValidator, transmissionValidator} from '../../shared/validators.js';
 
 
 
@@ -29,17 +30,17 @@ export class CreateComponent implements OnInit {
     this.form = this.fb.group({
       modelName: ['', Validators.required],
       brand: ['', Validators.required],
-      type: ['', Validators.required],
-      power: ['', Validators.required],
-      topSpeed: ['', Validators.required],
-      torque: ['', Validators.required],
-      fuelCapacity: ['', Validators.required],
-      weight: ['', Validators.required],
-      fuelType: ['', Validators.required],
-      transmission: ['', Validators.required],
-      drivetrain: ['', Validators.required],
-      price: ['', Validators.required],
-      yearOfProduction: ['', Validators.required],
+      type: ['', [Validators.required, carTypeValidator]],
+      power: ['', [Validators.required, Validators.min(50)]],
+      topSpeed: ['', [Validators.required, Validators.min(60)]],
+      torque: ['', [Validators.required, Validators.min(100)]],
+      fuelCapacity: ['', [Validators.required, Validators.min(20)]],
+      weight: ['', [Validators.required, Validators.min(1000)]],
+      fuelType: ['', [Validators.required, fuelTypeValidator]],
+      transmission: ['', [Validators.required, transmissionValidator]],
+      drivetrain: ['', [Validators.required, drivetrainValidator]],
+      price: ['', [Validators.required, Validators.min(500)]],
+      yearOfProduction: ['', [Validators.required, Validators.min(1990)]],
       mainImage: ['', Validators.required],
       secondImage: ['', Validators.required],
       thirdImage: ['', Validators.required],

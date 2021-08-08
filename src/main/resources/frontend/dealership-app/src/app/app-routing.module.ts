@@ -10,20 +10,28 @@ import {NotFoundComponent} from './core/not-found/not-found.component';
 
 import {CoreModule} from './core/core.module';
 import {HomeNotFoundComponent} from './home/home-not-found/home-not-found.component';
-import {RegisterLoginComponent} from './user/register-login/register-login.component';
 import {ListingAllComponent} from './listing/listing-all/listing-all.component';
 import {AboutComponent} from './home/about/about.component';
+import {AuthActivate} from './core/guards/auth.actiavte';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '', component: HomeComponent, pathMatch: 'full'},
+  { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'add', component: CreateComponent},
-  { path: 'registered', component: RegisterLoginComponent, pathMatch: 'full'},
-  { path: 'all', component: ListingAllComponent, pathMatch: 'full'},
+  { path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthActivate],
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'} },
+  { path: 'add',
+    component: CreateComponent,
+    canActivate: [AuthActivate],
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'} },
+  { path: 'all',
+    component: ListingAllComponent,
+    canActivate: [AuthActivate],
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}},
   { path: 'home/about', component : AboutComponent, pathMatch: 'full' },
   { path: '**', component : NotFoundComponent, pathMatch: 'full' }
 ];
