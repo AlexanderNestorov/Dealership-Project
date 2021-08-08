@@ -13,27 +13,64 @@ import {HomeNotFoundComponent} from './home/home-not-found/home-not-found.compon
 import {ListingAllComponent} from './listing/listing-all/listing-all.component';
 import {AboutComponent} from './home/about/about.component';
 import {AuthActivate} from './core/guards/auth.actiavte';
+import {LocationComponent} from './location/location.component';
+import {ReviewHomeComponent} from './review-home/review-home.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'home'},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile',
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthActivate],
-    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'} },
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}
+  },
   { path: 'add',
     component: CreateComponent,
     canActivate: [AuthActivate],
-    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'} },
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}
+  },
   { path: 'all',
     component: ListingAllComponent,
     canActivate: [AuthActivate],
-    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}},
-  { path: 'home/about', component : AboutComponent, pathMatch: 'full' },
-  { path: '**', component : NotFoundComponent, pathMatch: 'full' }
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}
+  },
+  {
+    path: 'about',
+    component : AboutComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'locations',
+    component: LocationComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'reviews',
+    component: ReviewHomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component : NotFoundComponent,
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

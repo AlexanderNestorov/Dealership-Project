@@ -17,4 +17,5 @@ export interface Car{
   author: string;
   secondImage: string;
   thirdImage: string;
+  reviews: [];
 }

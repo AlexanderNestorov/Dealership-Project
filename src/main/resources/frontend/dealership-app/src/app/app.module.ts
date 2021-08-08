@@ -16,6 +16,10 @@ import { CreateComponent } from './listing/create/create.component';
 import {HomeModule} from './home/home.module';
 import {ListingModule} from './listing/listing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LocationComponent } from './location/location.component';
+import {AgmCoreModule} from '@agm/core';
+import {ReviewHomeComponent} from './review-home/review-home.component';
+
 
 
 @NgModule({
@@ -25,9 +29,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    CreateComponent
+    CreateComponent,
+    LocationComponent,
+    ReviewHomeComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -35,7 +42,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     AppRoutingModule,
     ListingModule,
-    NgbModule
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBUNdqMVBT9T-w9zeb7qFM4riL_4xNO_2o',
+      libraries: ['places']
+    })
+
+  ],
+  exports: [
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

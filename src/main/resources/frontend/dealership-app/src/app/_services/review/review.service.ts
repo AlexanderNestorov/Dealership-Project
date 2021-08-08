@@ -14,13 +14,13 @@ const httpOptions = {
 })
 export class ReviewService {
   constructor(private http: HttpClient) { }
-  getAllPictures(): Observable<Review[]> {
+  getAllReviews(): Observable<Review[]> {
     return this.http.get<Review[]>(API_URL + 'all');
   }
   addNewPicture(review: Review): Observable<Review> {
     return this.http.post<Review>(API_URL + 'add', review, httpOptions);
   }
-  getAllPicturesById(id: number) {
+  getAllReviewsById(id: number) {
     const httpParams = new HttpParams().set('id', String(id));
     return this.http.get<Review[]>(API_URL + 'bycar' + id, {
       params: httpParams
