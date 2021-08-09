@@ -34,4 +34,8 @@ export class ReviewService {
       params: httpParams
     } );
   }
+
+  public deleteReview(reviewId: number): Observable<void> {
+    return this.http.delete<void>(API_URL + `delete/${reviewId}`, httpOptions);
+  }
 }

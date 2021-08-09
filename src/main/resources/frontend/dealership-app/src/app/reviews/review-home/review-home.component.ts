@@ -37,9 +37,8 @@ export class ReviewHomeComponent implements OnInit {
 
   onAddReview(formData: any) {
     console.log(formData.value);
-    const {text, car_id, author, timeOfCreation} = formData.value;
-    console.log(car_id);
-    this.reviewService.addNewReview({text, car_id, author, timeOfCreation}).subscribe(
+    // const {text, car_id, author, timeOfCreation} = formData.value;
+    this.reviewService.addNewReview(formData.value).subscribe(
       response => {
         console.log(response);
         this.add = false;

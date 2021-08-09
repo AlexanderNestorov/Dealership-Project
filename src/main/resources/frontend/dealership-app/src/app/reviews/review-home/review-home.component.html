@@ -8,8 +8,10 @@
 </select>
   </article>
 
-  <article>
-  <app-review-item *ngFor="let review of reviews" [review] = "review" [carId]="review.car_id"></app-review-item>
+  <article class="selected-reviews">
+    <h3 *ngIf="selectedValue && reviews.length !== 0">Reviews for selected listing:</h3>
+    <app-review-item *ngFor="let review of reviews" [review] = "review" [carId]="review.car_id"></app-review-item>
+    <h3 *ngIf="selectedValue && reviews.length === 0">No reviews for selected value:</h3>
   </article>
 </section>
 

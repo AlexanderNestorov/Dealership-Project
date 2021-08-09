@@ -1,4 +1,7 @@
 <article>
-<p >{{review.text}}</p>
+<div class="text">{{review.text}}</div>
+  <p>Created by: {{review.author}}</p>
+  <P>Time of upload: {{review.timeOfCreation}}</P>
+  <button *ngIf="review.author === currentUser" (click)="onDelete(review.id)">Delete Review</button>
 </article>
 

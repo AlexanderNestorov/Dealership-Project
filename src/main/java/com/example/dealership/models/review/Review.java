@@ -27,7 +27,8 @@ public class Review implements Serializable {
     public Review() {
     }
 
-    public Review(String text, int car, String author, String timeOfCreation) {
+    public Review(Long id,String text, int car, String author, String timeOfCreation) {
+        this.id = id;
         this.text = text;
         this.car_id = car;
         this.author = author;

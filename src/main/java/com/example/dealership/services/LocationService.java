@@ -41,11 +41,4 @@ public class LocationService {
         locationRepository.deleteLocationById(id);
     }
 
-//    public List<Review> findAllReviewsByCar(Long id) {
-//        return this.reviewRepository.findAllByCar_id(id);
-//    }
-//
-//    public String findReviewAuthorByCarId(Long id) {
-//        return this.reviewRepository.findReviewAuthorByCarId(id);
-//    }
 }

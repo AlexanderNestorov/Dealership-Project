@@ -51,17 +51,4 @@ public class LocationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @GetMapping("/bycar{id}")
-//    public ResponseEntity<List<Review>> getReviewsByCar(@PathVariable("id") Long id) {
-//        List<Review> reviews = this.reviewService.findAllReviewsByCar(id);
-//
-//        return new ResponseEntity<>(reviews, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/author{id}")
-//    public String getReviewAuthorByCarId(@PathVariable("id") Long id) {
-//        String author = this.reviewService.findReviewAuthorByCarId(id);
-//
-//        return author;
-//    }
 }

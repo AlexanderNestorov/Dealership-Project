@@ -1,4 +1,7 @@
 import {AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
+import {LocationService} from '../../_services/location/location.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {ILocation} from '../../shared/interfaces/ILocation';
 
 @Component({
   selector: 'app-location',
@@ -10,15 +13,14 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
   longitude: number;
   zoom: number;
 
-  markers;
+  markers: ILocation[];
+
+  constructor(private locationService: LocationService) {
+  }
 
 
   ngOnInit() {
-  this.markers = [{latitude: 25, longitude: 30},
-{latitude: 35, longitude: 40},
-{latitude: 45, longitude: 50},
-{latitude: 55, longitude: 60},
-{latitude: 65, longitude: 70}];
+    this.getLocations();
   }
 
   ngAfterContentInit() {
@@ -43,6 +45,16 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
 
    onUpdate($event) {
     console.log($event.coords);
+  }
+
+  private getLocations() {
+    this.locationService.getAllLocations().subscribe((response: ILocation[]) => {
+        this.markers = response;
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
   }
 
 }

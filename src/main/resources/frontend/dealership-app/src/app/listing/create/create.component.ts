@@ -55,6 +55,7 @@ export class CreateComponent implements OnInit {
   }
 
   async createOnSubmit(formData: any): Promise<any> {
+    console.log(formData.value);
     this.carService.addNewCar(formData.value).subscribe(
       response => {
         console.log(response);
