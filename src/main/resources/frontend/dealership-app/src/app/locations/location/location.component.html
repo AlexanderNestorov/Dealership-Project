@@ -1,0 +1,14 @@
+<app-header></app-header>
+<agm-map (mapClick)="onUpdate($event)"
+  [latitude]="latitude"
+  [longitude]="longitude"
+  [zoom]="zoom" >
+  <agm-marker *ngFor="let marker of markers"
+    [latitude]="marker.latitude"
+    [longitude]="marker.longitude"></agm-marker>
+</agm-map>
+
+<div id="map"></div>
+
+<app-footer></app-footer>
+

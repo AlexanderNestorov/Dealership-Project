@@ -17,12 +17,20 @@ export class ReviewService {
   getAllReviews(): Observable<Review[]> {
     return this.http.get<Review[]>(API_URL + 'all');
   }
-  addNewPicture(review: Review): Observable<Review> {
+  addNewReview(review: Review): Observable<Review> {
     return this.http.post<Review>(API_URL + 'add', review, httpOptions);
   }
   getAllReviewsById(id: number) {
     const httpParams = new HttpParams().set('id', String(id));
     return this.http.get<Review[]>(API_URL + 'bycar' + id, {
+      params: httpParams
+    } );
+  }
+
+  getAuthorByCarId(id: number) {
+    const httpParams = new HttpParams().set('id', String(id));
+    return this.http.get<string>(API_URL + 'author' + id, {
+      responseType: 'text' as 'json',
       params: httpParams
     } );
   }

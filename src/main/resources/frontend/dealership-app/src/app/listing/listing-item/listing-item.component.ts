@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Car} from '../../shared/interfaces/Car';
-import {Picture} from '../../shared/interfaces/Picture';
 import {HttpErrorResponse} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -43,7 +42,6 @@ export class ListingItemComponent implements OnInit {
   }
 
   @Input() car: Car | undefined;
-  pictures?: Picture[];
   currentUser: string;
   isAuthor: boolean;
   closeResult = '';

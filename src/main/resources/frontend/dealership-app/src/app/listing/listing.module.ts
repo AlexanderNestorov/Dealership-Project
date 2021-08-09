@@ -15,7 +15,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         ListingItemComponent
     ],
     exports: [
-        ListingHomeComponent
+        ListingHomeComponent,
+        ListingItemComponent
     ],
     imports: [
         CommonModule,

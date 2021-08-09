@@ -42,5 +42,9 @@ public class ReviewService {
         return this.reviewRepository.findAllByCar_id(id);
     }
 
+    public String findReviewAuthorByCarId(Long id) {
+        return this.reviewRepository.findReviewAuthorByCarId(id);
+    }
+
 }
 

@@ -21,4 +21,10 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     )
     List<Review> findAllByCar_id(Long carId);
 
+    @Query(
+            value = "SELECT r.author from reviews r WHERE r.car_id = ?1",
+            nativeQuery = true
+    )
+    String findReviewAuthorByCarId(Long carId);
+
 }

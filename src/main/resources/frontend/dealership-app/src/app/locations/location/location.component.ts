@@ -10,15 +10,15 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
   longitude: number;
   zoom: number;
 
-  markers: [{latitude: 25, longitude: 30},
-    {latitude: 35, longitude: 40},
-    {latitude: 45, longitude: 50},
-    {latitude: 55, longitude: 60},
-    {latitude: 65, longitude: 70}];
+  markers;
 
 
   ngOnInit() {
-  //   this.setCurrentLocation();
+  this.markers = [{latitude: 25, longitude: 30},
+{latitude: 35, longitude: 40},
+{latitude: 45, longitude: 50},
+{latitude: 55, longitude: 60},
+{latitude: 65, longitude: 70}];
   }
 
   ngAfterContentInit() {

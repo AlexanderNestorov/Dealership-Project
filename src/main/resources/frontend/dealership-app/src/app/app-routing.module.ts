@@ -13,8 +13,8 @@ import {HomeNotFoundComponent} from './home/home-not-found/home-not-found.compon
 import {ListingAllComponent} from './listing/listing-all/listing-all.component';
 import {AboutComponent} from './home/about/about.component';
 import {AuthActivate} from './core/guards/auth.actiavte';
-import {LocationComponent} from './location/location.component';
-import {ReviewHomeComponent} from './review-home/review-home.component';
+import {LocationComponent} from './locations/location/location.component';
+import {ReviewHomeComponent} from './reviews/review-home/review-home.component';
 
 
 const routes: Routes = [
@@ -61,10 +61,10 @@ const routes: Routes = [
     component: LocationComponent,
     pathMatch: 'full'
   },
-  {
-    path: 'reviews',
+  { path: 'reviews',
     component: ReviewHomeComponent,
-    pathMatch: 'full'
+    canActivate: [AuthActivate],
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}
   },
   {
     path: '**',

@@ -16,9 +16,11 @@ import { CreateComponent } from './listing/create/create.component';
 import {HomeModule} from './home/home.module';
 import {ListingModule} from './listing/listing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LocationComponent } from './location/location.component';
+import { LocationComponent } from './locations/location/location.component';
 import {AgmCoreModule} from '@agm/core';
-import {ReviewHomeComponent} from './review-home/review-home.component';
+import {ReviewHomeComponent} from './reviews/review-home/review-home.component';
+import {ReviewsModule} from './reviews/reviews.module';
+import {LocationsModule} from './locations/locations.module';
 
 
 
@@ -45,7 +47,9 @@ import {ReviewHomeComponent} from './review-home/review-home.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBUNdqMVBT9T-w9zeb7qFM4riL_4xNO_2o',
       libraries: ['places']
-    })
+    }),
+    ReviewsModule,
+    LocationsModule
 
   ],
   exports: [

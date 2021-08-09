@@ -57,4 +57,11 @@ public class ReviewController {
 
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
+
+    @GetMapping("/author{id}")
+    public String getReviewAuthorByCarId(@PathVariable("id") Long id) {
+        String author = this.reviewService.findReviewAuthorByCarId(id);
+
+        return author;
+    }
 }
