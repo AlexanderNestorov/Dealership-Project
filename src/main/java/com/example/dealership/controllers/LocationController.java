@@ -51,4 +51,16 @@ public class LocationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/{city}")
+    public ResponseEntity<List<Location>> getLocationsByCity(@PathVariable("city") String city) {
+        List<Location> locations = this.locationService.findAllLocationsByCity(city);
+        return new ResponseEntity<>(locations, HttpStatus.OK);
+    }
+
+    @GetMapping("cities")
+    public ResponseEntity<List<String>> getCities() {
+        List<String> cities = this.locationService.findAllCities();
+        return new ResponseEntity<>(cities, HttpStatus.OK);
+    }
+
 }

@@ -69,3 +69,7 @@ div.text a:hover {
     text-decoration: underline;
   }
 }
+
+.yes {
+  font-size: 35px;
+}

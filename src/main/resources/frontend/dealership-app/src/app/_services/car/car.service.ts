@@ -31,7 +31,7 @@ export class CarService {
     return this.http.put<Car>(API_URL + 'update', car, httpOptions);
   }
 
-  public deleteCar(carId: number): Observable<void> {
+  deleteCar(carId: number): Observable<void> {
     return this.http.delete<void>(API_URL + `delete/${carId}`, httpOptions);
   }
 
@@ -40,6 +40,15 @@ export class CarService {
     return this.http.get<Car[]>(API_URL + 'byuser' + user, {
       params: httpParams
     } );
+  }
+
+  findCarById(carId: number) {
+    const httpParams = new HttpParams().set('id', carId.toString());
+    return this.http.get<Car>(API_URL + 'find/' + carId, {
+      params: httpParams,
+      headers: httpOptions.headers
+      }
+    );
   }
 
 }

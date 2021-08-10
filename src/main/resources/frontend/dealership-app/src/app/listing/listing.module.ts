@@ -5,6 +5,8 @@ import { ListingAllComponent } from './listing-all/listing-all.component';
 import { ListingItemComponent } from './listing-item/listing-item.component';
 import {CoreModule} from '../core/core.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ListingDetailsComponent } from './listing-details/listing-details.component';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -12,7 +14,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     declarations: [
         ListingHomeComponent,
         ListingAllComponent,
-        ListingItemComponent
+        ListingItemComponent,
+        ListingDetailsComponent
     ],
     exports: [
         ListingHomeComponent,
@@ -22,7 +25,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         CommonModule,
         CoreModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        RouterModule
     ]
 })
 export class ListingModule { }

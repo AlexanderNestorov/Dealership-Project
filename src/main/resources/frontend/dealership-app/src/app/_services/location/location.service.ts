@@ -20,18 +20,14 @@ export class LocationService {
   addNewLocation(location: ILocation): Observable<ILocation> {
     return this.http.post<ILocation>(API_URL + 'add', location, httpOptions);
   }
-//   getAllReviewsById(id: number) {
-//     const httpParams = new HttpParams().set('id', String(id));
-//     return this.http.get<Review[]>(API_URL + 'bycar' + id, {
-//       params: httpParams
-//     } );
-//   }
+  getAllCities() {
+    return this.http.get<string[]>(API_URL + 'cities');
+  }
 //
-//   getAuthorByCarId(id: number) {
-//     const httpParams = new HttpParams().set('id', String(id));
-//     return this.http.get<string>(API_URL + 'author' + id, {
-//       responseType: 'text' as 'json',
-//       params: httpParams
-//     } );
-//   }
+  getLocationsByCity(city: string) {
+    const httpParams = new HttpParams().set('city', city);
+    return this.http.get<ILocation[]>(API_URL  + city, {
+      params: httpParams
+    } );
+  }
 }

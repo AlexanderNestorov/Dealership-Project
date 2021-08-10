@@ -65,7 +65,6 @@ export class ReviewHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.timeOfCreation);
     this.getCarsByPrice();
     this.author = this.tokenStorage.getUser();
     console.log(this.author.username);

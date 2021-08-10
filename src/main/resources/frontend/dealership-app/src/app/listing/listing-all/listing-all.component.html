@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div id="container" class="container">
   <app-listing-item *ngFor="let car of cars" [car] = "car"></app-listing-item>
-  <section *ngIf="length == 0 || length == undefined" class="no-content">
+  <section *ngIf="cars.length == 0" class="no-content">
     <h1>No listings at the moment!</h1>
     <h2>Please check again later!</h2>
   </section>

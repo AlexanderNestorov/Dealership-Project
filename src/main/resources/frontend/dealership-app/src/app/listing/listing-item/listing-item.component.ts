@@ -89,7 +89,7 @@ export class ListingItemComponent implements OnInit {
   }
 
 
-   async onDelete(carId: number) {
+   onDelete(carId: number) {
     this.carService.deleteCar(carId).subscribe(
       (response: void) => {
         console.log(response);

@@ -15,15 +15,16 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
     @Transactional
     void deleteLocationById(Long id);
 
-//    @Query(
-//            value = "SELECT * from reviews r WHERE r.car_id = ?1",
-//            nativeQuery = true
-//    )
-//    List<Review> findAllByCar_id(Long carId);
-//
-//    @Query(
-//            value = "SELECT r.author from reviews r WHERE r.car_id = ?1",
-//            nativeQuery = true
-//    )
-//    String findReviewAuthorByCarId(Long carId);
+    @Query(
+            value = "SELECT * from locations l WHERE l.city = ?1",
+            nativeQuery = true
+    )
+    List<Location> findAllByCity(String city);
+
+    @Query(
+            value = "SELECT DISTINCT l.city FROM locations l",
+            nativeQuery = true
+    )
+    List<String> findAllCities();
+
 }

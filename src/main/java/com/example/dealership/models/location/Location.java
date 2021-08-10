@@ -21,10 +21,14 @@ public class Location implements Serializable {
     @Column(nullable = false)
     private Double longitude;
 
-    public Location( String city, Double latitude, Double longitude) {
+    @Column(nullable = false)
+    private String address;
+
+    public Location( String city, Double latitude, Double longitude, String address) {
         this.city = city;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
     public Location() {
@@ -60,5 +64,13 @@ public class Location implements Serializable {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

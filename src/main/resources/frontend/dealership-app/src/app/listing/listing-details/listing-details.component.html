@@ -1,0 +1,6 @@
+<app-header></app-header>
+<p>listing-details works!</p>
+
+<h1>{{car!.modelName}}</h1>
+<button *ngIf="isAuthor" class="btn " (click)="onDelete(car.id)"><i class="fab fa-github"></i> Delete</button>
+<app-footer></app-footer>

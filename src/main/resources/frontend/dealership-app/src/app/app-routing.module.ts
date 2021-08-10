@@ -15,6 +15,7 @@ import {AboutComponent} from './home/about/about.component';
 import {AuthActivate} from './core/guards/auth.actiavte';
 import {LocationComponent} from './locations/location/location.component';
 import {ReviewHomeComponent} from './reviews/review-home/review-home.component';
+import {ListingDetailsComponent} from './listing/listing-details/listing-details.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,12 @@ const routes: Routes = [
     component: ReviewHomeComponent,
     canActivate: [AuthActivate],
     data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'}
+  },
+  { path: 'details/:carId',
+    component: ListingDetailsComponent,
+    canActivate: [AuthActivate],
+    data: { authenticationRequired: true, authenticationFailureRedirectUrl: 'home'},
+    pathMatch: 'full'
   },
   {
     path: '**',

@@ -7,8 +7,8 @@
           <h5 class="card-title">{{car.modelName}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{car.brand}}</h6>
           <p class="card-text">Type: {{car.type}} Drivetrain: {{car.drivetrain}}</p>
-          <button *ngIf="isAuthor" class="btn " (click)="onDelete(car.id)"><i class="fab fa-github"></i> Delete</button>
           <button *ngIf="isAuthor" class="btn btn-lg btn-outline-primary" (click)="open(content, car)">Update</button>
+          <button  class="btn btn-lg btn-outline-primary" [routerLink]="['/details', car.id]">Details</button>
         </div>
       </div>
     </div>

@@ -11,9 +11,19 @@ import {ILocation} from '../../shared/interfaces/ILocation';
 export class LocationComponent implements OnInit, AfterContentInit, AfterViewInit{
   latitude: number;
   longitude: number;
+  selectedValue: number;
   zoom: number;
 
   markers: ILocation[];
+  cities: string[];
+  locations: ILocation[];
+
+  updateSelect(e){
+    this.selectedValue = e.target.value;
+    console.log(this.selectedValue);
+    this.getLocationsByCity(e.target.value);
+    this.zoom = 8;
+  }
 
   constructor(private locationService: LocationService) {
   }
@@ -21,6 +31,7 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
 
   ngOnInit() {
     this.getLocations();
+    this.getCities();
   }
 
   ngAfterContentInit() {
@@ -38,7 +49,7 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
         console.log(this.latitude);
         this.longitude = position.coords.longitude;
         console.log(this.longitude);
-        this.zoom = 15;
+        this.zoom = 7;
       });
     }
   }
@@ -50,6 +61,26 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
   private getLocations() {
     this.locationService.getAllLocations().subscribe((response: ILocation[]) => {
         this.markers = response;
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
+  }
+
+  private getCities() {
+    this.locationService.getAllCities().subscribe(
+      (response: string[]) => {
+        this.cities = response;
+      }
+    );
+  }
+
+  private getLocationsByCity(city: string) {
+    this.locationService.getLocationsByCity(city).subscribe(
+      (response: ILocation[]) => {
+        this.markers = response;
+        this.locations = response;
         console.log(response);
       },
       (error: HttpErrorResponse) => {

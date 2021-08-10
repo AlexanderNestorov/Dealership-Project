@@ -1,14 +1,30 @@
 <app-header></app-header>
-<agm-map (mapClick)="onUpdate($event)"
-  [latitude]="latitude"
-  [longitude]="longitude"
-  [zoom]="zoom" >
-  <agm-marker *ngFor="let marker of markers"
-    [latitude]="marker.latitude"
-    [longitude]="marker.longitude"></agm-marker>
-</agm-map>
+<section class="select-location">
+  <div class="select-header">
+    <h1>Select a city to view our offices:</h1>
+  </div>
+  <article class="select-body">
+    <select (change)="updateSelect($event)">
+      <option value="" disabled selected>Select a city</option>
+      <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+    </select>
+  </article>
 
-<div id="map"></div>
+    <article class="selected-locations">
+      <h3 *ngIf="selectedValue && locations.length !== 0">Offices at selected Location:</h3>
+      <app-location-item *ngFor="let location of locations" [location] = "location" ></app-location-item>
+    </article>
+</section>
+<section class="map-div">
+  <agm-map (mapClick)="onUpdate($event)"
+           [latitude]="latitude"
+           [longitude]="longitude"
+           [zoom]="zoom">
+    <agm-marker *ngFor="let marker of markers"
+                [latitude]="marker.latitude"
+                [longitude]="marker.longitude"></agm-marker>
+  </agm-map>
+</section>
 
 <app-footer></app-footer>
 

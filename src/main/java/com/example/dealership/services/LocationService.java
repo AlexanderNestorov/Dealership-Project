@@ -41,4 +41,12 @@ public class LocationService {
         locationRepository.deleteLocationById(id);
     }
 
+    public List<Location> findAllLocationsByCity(String city) {
+        return locationRepository.findAllByCity(city);
+    }
+
+    public List<String> findAllCities() {
+        return this.locationRepository.findAllCities();
+    }
+
 }
