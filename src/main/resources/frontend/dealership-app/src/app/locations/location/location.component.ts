@@ -22,7 +22,6 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
     this.selectedValue = e.target.value;
     console.log(this.selectedValue);
     this.getLocationsByCity(e.target.value);
-    this.zoom = 8;
   }
 
   constructor(private locationService: LocationService) {

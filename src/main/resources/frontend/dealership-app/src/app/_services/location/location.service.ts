@@ -30,4 +30,8 @@ export class LocationService {
       params: httpParams
     } );
   }
+
+  public deleteLocation(locationId: number): Observable<void> {
+    return this.http.delete<void>(API_URL + `delete/${locationId}`, httpOptions);
+  }
 }
