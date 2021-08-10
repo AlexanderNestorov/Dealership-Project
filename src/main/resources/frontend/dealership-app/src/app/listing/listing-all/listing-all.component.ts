@@ -16,6 +16,7 @@ export class ListingAllComponent implements OnInit {
   hasAdminRole = false;
   hasUserRole = false;
   length: number;
+  searchText;
 
   constructor(private carService: CarService, private tokenStorageService: TokenStorageService) { }
 

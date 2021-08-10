@@ -1,7 +1,12 @@
 <app-header></app-header>
+<div class="search-hero">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+         placeholder="Start searching for a listing by entering: Model name, Brand, Year, Torque, Fuel Type, Fuel Capacity, Price, Power, Weight or Top Speed">
+</div>
+
 <div id="container" class="container">
-  <app-listing-item *ngFor="let car of cars" [car] = "car"></app-listing-item>
-  <section *ngIf="cars.length == 0" class="no-content">
+  <app-listing-item *ngFor="let car of cars | filter:searchText" [car] = "car"></app-listing-item>
+  <section *ngIf="cars.length === 0" class="no-content">
     <h1>No listings at the moment!</h1>
     <h2>Please check again later!</h2>
   </section>

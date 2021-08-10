@@ -21,6 +21,7 @@ import {AgmCoreModule} from '@agm/core';
 import {ReviewHomeComponent} from './reviews/review-home/review-home.component';
 import {ReviewsModule} from './reviews/reviews.module';
 import {LocationsModule} from './locations/locations.module';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 
 
@@ -49,7 +50,8 @@ import {LocationsModule} from './locations/locations.module';
       libraries: ['places']
     }),
     ReviewsModule,
-    LocationsModule
+    LocationsModule,
+    Ng2SearchPipeModule
 
   ],
   exports: [
