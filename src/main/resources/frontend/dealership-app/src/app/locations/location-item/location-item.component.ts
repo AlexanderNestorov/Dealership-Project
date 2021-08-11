@@ -11,16 +11,16 @@ import {LocationService} from '../../_services/location/location.service';
 })
 export class LocationItemComponent implements OnInit {
 
-  @Input() location: ILocation | undefined;
+  @Input() location?: ILocation | undefined;
   isAdmin: boolean;
-  roles: string[];
+  roles?: string[];
   constructor(private tokenStorageService: TokenStorageService, private locationService: LocationService) { }
 
   ngOnInit(): void {
     const user = this.tokenStorageService.getUser();
     this.roles = user.roles;
 
-    this.isAdmin = this.roles.includes('ROLE_ADMIN');
+    this.isAdmin = this.roles?.includes('ROLE_ADMIN');
   }
 
   onDelete(locationId) {

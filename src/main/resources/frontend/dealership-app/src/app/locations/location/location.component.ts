@@ -2,6 +2,11 @@ import {AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core'
 import {LocationService} from '../../_services/location/location.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ILocation} from '../../shared/interfaces/ILocation';
+import {TokenStorageService} from '../../_services/user/token-storage.service';
+import {Car} from '../../shared/interfaces/Car';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-location',
@@ -13,10 +18,17 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
   longitude: number;
   selectedValue: number;
   zoom: number;
+  isAdmin: boolean;
+  roles?: string[];
+  closeResult = '';
 
-  markers: ILocation[];
-  cities: string[];
-  locations: ILocation[];
+  markers?: ILocation[];
+  cities?: string[];
+  locations?: ILocation[];
+
+  addLat: number;
+  addLong: number;
+  addForm: FormGroup;
 
   updateSelect(e){
     this.selectedValue = e.target.value;
@@ -24,13 +36,32 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
     this.getLocationsByCity(e.target.value);
   }
 
-  constructor(private locationService: LocationService) {
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'add-location-modal'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  constructor(private locationService: LocationService, private tokenStorageService: TokenStorageService,
+              private modalService: NgbModal, private fb: FormBuilder, private router: Router) {
+    this.addForm = this.fb.group({
+      city: ['', Validators.required],
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
+      address: ['', Validators.required]
+    });
   }
 
 
   ngOnInit() {
     this.getLocations();
     this.getCities();
+    const user = this.tokenStorageService.getUser();
+    this.roles = user.roles;
+
+    this.isAdmin = this.roles?.includes('ROLE_ADMIN');
   }
 
   ngAfterContentInit() {
@@ -54,7 +85,9 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
   }
 
    onUpdate($event) {
-    console.log($event.coords);
+    this.addLat = $event.coords.lat;
+    this.addLong = $event.coords.lng;
+    console.log($event);
   }
 
   private getLocations() {
@@ -85,6 +118,31 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
+  }
+
+  public getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  addOnSubmit(formData: any) {
+    console.log(formData.value);
+    this.locationService.addNewLocation(formData.value).subscribe(
+      response => {
+        this.getLocations();
+        this.getCities();
+        formData.reset();
+        // this.router.navigateByUrl('/home').finally(() => window.location.reload());
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        formData.reset();
+      }
+    );
+
   }
 
 }
