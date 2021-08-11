@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css']
 })
-export class LocationComponent implements OnInit, AfterContentInit, AfterViewInit{
+export class LocationComponent implements OnInit, AfterContentInit{
   latitude: number;
   longitude: number;
   selectedValue: number;
@@ -66,9 +66,6 @@ export class LocationComponent implements OnInit, AfterContentInit, AfterViewIni
 
   ngAfterContentInit() {
     this.setCurrentLocation();
-  }
-
-  ngAfterViewInit() {
   }
 
   // Get Current Location Coordinates

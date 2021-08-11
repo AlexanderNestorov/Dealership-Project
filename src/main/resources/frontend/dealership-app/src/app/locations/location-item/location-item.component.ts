@@ -3,6 +3,8 @@ import {ILocation} from '../../shared/interfaces/ILocation';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {LocationService} from '../../_services/location/location.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-location-item',
@@ -14,13 +16,35 @@ export class LocationItemComponent implements OnInit {
   @Input() location?: ILocation | undefined;
   isAdmin: boolean;
   roles?: string[];
-  constructor(private tokenStorageService: TokenStorageService, private locationService: LocationService) { }
+  editForm: FormGroup;
+  city: string;
+  latitude: number;
+  longitude: number;
+  address: string;
+  closeResult: string;
+  zoom: number;
+  editLocation: ILocation;
+
+  constructor(private tokenStorageService: TokenStorageService, private locationService: LocationService,
+              private fb: FormBuilder, private modalService: NgbModal) {
+    this.editForm = this.fb.group({
+      city: ['', Validators.required],
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
+      address: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     const user = this.tokenStorageService.getUser();
     this.roles = user.roles;
 
     this.isAdmin = this.roles?.includes('ROLE_ADMIN');
+    this.city = this.location.city;
+    this.latitude = this.location.latitude;
+    this.longitude = this.location.longitude;
+    this.address = this.location.address;
+    this.zoom = 8;
   }
 
   onDelete(locationId) {
@@ -34,6 +58,42 @@ export class LocationItemComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  public getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'add-location-modal'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.editLocation = this.location;
+  }
+  onUpdate($event) {
+    this.editLocation.latitude = $event.coords.lat;
+    this.editLocation.longitude = $event.coords.lng;
+    console.log($event);
+  }
+
+  editOnSubmit(location: ILocation) {
+    console.log(location);
+    this.locationService.updateLocation(location).subscribe(
+      response => {
+        console.log(response);
+        window.location.reload();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
   }
 
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocationItemComponent } from './location-item/location-item.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
 
 
 
@@ -11,8 +13,10 @@ import { LocationItemComponent } from './location-item/location-item.component';
     exports: [
         LocationItemComponent
     ],
-    imports: [
-        CommonModule
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AgmCoreModule
+  ]
 })
 export class LocationsModule { }

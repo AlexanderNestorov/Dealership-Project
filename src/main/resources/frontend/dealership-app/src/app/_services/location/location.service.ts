@@ -34,4 +34,8 @@ export class LocationService {
   public deleteLocation(locationId: number): Observable<void> {
     return this.http.delete<void>(API_URL + `delete/${locationId}`, httpOptions);
   }
+
+  updateLocation(location: ILocation): Observable<ILocation> {
+    return this.http.put<ILocation>(API_URL + 'update', location, httpOptions);
+  }
 }
