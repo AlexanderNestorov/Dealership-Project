@@ -1,9 +1,29 @@
 <app-header></app-header>
 <button (click)="back()">Return</button>
-<p>listing-details works!</p>
 
-<h1>{{car?.modelName}}</h1>
-<button *ngIf="isAuthor" class="btn " (click)="onDelete(car.id)"><i class="fab fa-github"></i> Delete</button>
+<section>
+  <article class="car-header">
+    <h1>{{car?.modelName}}</h1>
+    <img class="main-image" src="{{car?.mainImage}}">
+  </article>
+  <article class="car-images">
+    <img src="{{car?.secondImage}}">
+    <img src="{{car?.thirdImage}}">
+  </article>
+  <article class="main-information">
+    <p>Model name: {{car?.modelName}}</p>
+    <p>Brand: {{car?.brand}}</p>
+    <p>Type: {{car?.type}}</p>
+    <p>Transmission: {{car?.transmission}}</p>
+    <p>Year of production: {{car?.yearOfProduction}}</p>
+    <p>Price: ${{car?.price}}</p>
+  </article>
+  <article class="secondary-information">
+
+  </article>
+  <button *ngIf="isAuthor" class="btn " (click)="onDelete(car?.id)"><i class="fab fa-github"></i> Delete</button>
+
+</section>
 
 <section>
   <article>

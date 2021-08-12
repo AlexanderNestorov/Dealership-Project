@@ -1,9 +1,15 @@
 footer {
     background: rgb(38, 38, 56);
-  position:fixed;
-  bottom:0;
-
-  width:100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content:center;
+  align-items:center;
 }
 
 footer p {
