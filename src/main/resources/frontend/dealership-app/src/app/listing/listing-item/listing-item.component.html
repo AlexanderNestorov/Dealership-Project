@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <img src="{{car.mainImage}}" class="card-img-top" alt="...">
+        <img src="{{car?.mainImage}}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{car.modelName}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{car.brand}}</h6>
-          <p class="card-text">Type: {{car.type}} Drivetrain: {{car.drivetrain}}</p>
+          <h5 class="card-title">{{car?.modelName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{car?.brand}}</h6>
+          <p class="card-text">Type: {{car?.type}} Drivetrain: {{car?.drivetrain}}</p>
           <button *ngIf="isAuthor" class="btn btn-lg btn-outline-primary" (click)="open(content, car)">Update</button>
-          <button  class="btn btn-lg btn-outline-primary" [routerLink]="['/details', car.id]">Details</button>
+          <button  class="btn btn-lg btn-outline-primary" [routerLink]="['/details', car?.id]">Details</button>
         </div>
       </div>
     </div>

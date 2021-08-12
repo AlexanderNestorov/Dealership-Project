@@ -67,7 +67,7 @@ export class CreateComponent implements OnInit {
       }
     );
 
-    this.router.navigateByUrl('/home').finally(() => window.location.reload());
+    this.router.navigateByUrl('/all').finally(() => window.location.reload());
   }
 
   async uploadMainPhotoToCloud(fileInput: any): Promise<any> {

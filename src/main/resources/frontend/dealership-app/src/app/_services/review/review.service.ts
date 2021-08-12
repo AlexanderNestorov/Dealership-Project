@@ -38,4 +38,10 @@ export class ReviewService {
   public deleteReview(reviewId: number): Observable<void> {
     return this.http.delete<void>(API_URL + `delete/${reviewId}`, httpOptions);
   }
+  getAllReviewsByAuthor(author: string) {
+    const httpParams = new HttpParams().set('author', author);
+    return this.http.get<Review[]>(API_URL + 'byauthor' + author, {
+      params: httpParams
+    } );
+  }
 }

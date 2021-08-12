@@ -1,6 +1,14 @@
 <app-header></app-header>
+<button (click)="back()">Return</button>
 <p>listing-details works!</p>
 
-<h1>{{car!.modelName}}</h1>
+<h1>{{car?.modelName}}</h1>
 <button *ngIf="isAuthor" class="btn " (click)="onDelete(car.id)"><i class="fab fa-github"></i> Delete</button>
+
+<section>
+  <article>
+    <h2>This listing's reviews:</h2>
+    <app-review-item *ngFor="let review of reviews" [review] = "review" [carId]="review.car_id"></app-review-item>
+  </article>
+</section>
 <app-footer></app-footer>

@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ListingDetailsComponent } from './listing-details/listing-details.component';
 import {RouterModule} from '@angular/router';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {ReviewsModule} from '../reviews/reviews.module';
 
 
 
@@ -28,7 +29,8 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
         ReactiveFormsModule,
         FormsModule,
         RouterModule,
-        Ng2SearchPipeModule
+        Ng2SearchPipeModule,
+        ReviewsModule
     ]
 })
 export class ListingModule { }

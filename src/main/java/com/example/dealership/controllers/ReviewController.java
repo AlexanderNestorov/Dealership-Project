@@ -64,4 +64,12 @@ public class ReviewController {
 
         return author;
     }
+
+    @GetMapping("/byauthor{author}")
+    public ResponseEntity<List<Review>> getReviewsByCar(@PathVariable("author") String author) {
+        List<Review> reviews = this.reviewService.findAllReviewsByAuthor(author);
+
+        return new ResponseEntity<>(reviews, HttpStatus.OK);
+    }
+
 }

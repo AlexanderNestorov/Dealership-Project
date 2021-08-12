@@ -3,20 +3,22 @@ package com.example.dealership.services;
 import com.example.dealership.exceptions.ItemNotFoundException;
 import com.example.dealership.models.car.Car;
 import com.example.dealership.repositories.car.CarRepository;
+import com.example.dealership.repositories.review.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
 public class CarService {
     private final CarRepository carRepository;
+    private final ReviewRepository reviewRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, ReviewRepository reviewRepository) {
         this.carRepository = carRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     public Car addCar(Car car) {
@@ -39,6 +41,7 @@ public class CarService {
 
     public void deleteCar(Long id) {
         carRepository.deleteCarById(id);
+        reviewRepository.deleteByCar(id);
     }
 
     public List<Car> findAllCarsByPriceDesc() {

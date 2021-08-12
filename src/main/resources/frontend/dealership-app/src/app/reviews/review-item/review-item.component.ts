@@ -4,6 +4,7 @@ import {ReviewService} from '../../_services/review/review.service';
 import {Review} from '../../shared/interfaces/Review';
 import {HttpErrorResponse} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
+import {CarService} from '../../_services/car/car.service';
 
 @Component({
   selector: 'app-review-item',
@@ -12,17 +13,18 @@ import {TokenStorageService} from '../../_services/user/token-storage.service';
 })
 export class ReviewItemComponent implements OnInit {
 
-  constructor(private reviewService: ReviewService, private tokenStorage: TokenStorageService) { }
+  constructor(private reviewService: ReviewService, private tokenStorage: TokenStorageService, private carService: CarService) { }
 
   @Input() carId: number | undefined;
   @Input() review: Review | undefined;
-  car: Car;
+  car?: Car;
   reviews: Review[];
   currentUser: string;
 
   ngOnInit(): void {
     this.getReviewsforCar(this.carId);
     this.currentUser = this.tokenStorage.getUser().username;
+    this.getCarById();
   }
 
   getReviewsforCar(carId) {
@@ -40,6 +42,18 @@ export class ReviewItemComponent implements OnInit {
       (response: void) => {
         console.log(response);
         window.location.reload();
+      },
+      // tslint:disable-next-line:no-shadowed-variable
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  getCarById() {
+    this.carService.findCarById(this.carId).subscribe(
+      (response: Car) => {
+        this.car = response;
       },
       // tslint:disable-next-line:no-shadowed-variable
       (error: HttpErrorResponse) => {
