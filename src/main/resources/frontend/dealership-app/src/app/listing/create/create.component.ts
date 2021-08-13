@@ -6,6 +6,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {CloudinaryService} from '../../_services/cloudinary/cloudinary.service';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
 import {carTypeValidator, drivetrainValidator, fuelTypeValidator, transmissionValidator} from '../../shared/validators.js';
+import {Location} from '@angular/common';
 
 
 
@@ -26,7 +27,7 @@ export class CreateComponent implements OnInit {
 
   constructor(private carService: CarService, private router: Router,
               private fb: FormBuilder, private cloudinary: CloudinaryService,
-              private tokenStorage: TokenStorageService) {
+              private tokenStorage: TokenStorageService, private location: Location) {
     this.form = this.fb.group({
       modelName: ['', Validators.required],
       brand: ['', Validators.required],
@@ -86,6 +87,10 @@ export class CreateComponent implements OnInit {
     if (fileInput.target.files && fileInput.target.files[0]) {
       this.thirdPicture = await this.cloudinary.uploadImage(fileInput.target.files[0]);
     }
+  }
+
+  back() {
+    this.location.back();
   }
 }
 

@@ -5,7 +5,7 @@
 </div>
 
 <div id="container" class="container">
-  <app-listing-item *ngFor="let car of cars | filter:searchText" [car] = "car"></app-listing-item>
+  <app-listing-item *ngFor="let car of cars | filter:searchText" [car] = "car" class="box"></app-listing-item>
   <section *ngIf="cars?.length === 0" class="no-content">
     <h1>No listings at the moment!</h1>
     <h2>Please check again later!</h2>

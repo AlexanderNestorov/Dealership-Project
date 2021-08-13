@@ -1,4 +1,13 @@
 .container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
 }
+.container>* {
+  flex: 0 0 33.3333%;
+}
+
+.box {
+  object-fit: fill;
+}
+
+

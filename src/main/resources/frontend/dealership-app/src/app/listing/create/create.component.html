@@ -2,8 +2,8 @@
     <section>
       <form id="account" #f="ngForm" [formGroup]="form" (ngSubmit)=" f.form.valid && createOnSubmit(f)">
         <h1>Add a new Listing</h1>
-        <p class="return-home">
-          <a href="javascript:void(0)" routerLink="/home">Return Home</a>
+        <p>
+          <button (click)="back()">Return</button>
         </p>
         <hr />
         <div class="form-group text">

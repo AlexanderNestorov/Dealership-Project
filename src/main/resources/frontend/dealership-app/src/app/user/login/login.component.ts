@@ -4,6 +4,7 @@ import { TokenStorageService } from '../../_services/user/token-storage.service'
 
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+              private router: Router, private fb: FormBuilder,
+              private location: Location) {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -55,5 +58,9 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  back() {
+    this.location.back();
   }
 }

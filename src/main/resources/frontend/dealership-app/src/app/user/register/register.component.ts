@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {emailValidator, rePasswordValidator} from '../../shared/validators.js';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
   roles: string[] = [];
 
   constructor(private authService: AuthService, private fb: FormBuilder,
-              private router: Router, private tokenStorageService: TokenStorageService) {
+              private router: Router, private tokenStorageService: TokenStorageService,
+              private location: Location) {
     this.passwordControl = this.fb.control('', [Validators.required, Validators.minLength(6)]);
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
@@ -61,5 +63,9 @@ export class RegisterComponent implements OnInit {
   }
   reloadPage(): void {
     window.location.reload();
+  }
+
+  back() {
+    this.location.back();
   }
 }
