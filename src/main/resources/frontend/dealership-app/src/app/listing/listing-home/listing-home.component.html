@@ -1,9 +1,9 @@
 <h1>Our top picks!</h1>
 <div *ngIf="isLoggedIn" class="container">
-  <section  *ngFor="let car of cars" class="car" >
+  <section  *ngFor="let car of cars" >
     <h2><a [routerLink]="['/details', car?.id]">{{car.modelName}}</a></h2>
     <div class="picture-container">
-      <img  src="{{car.mainImage}}" alt="../../../assets/99776312-error-404-page-not-found-error-with-glitch-effect-on-screen-vector-illustration-for-your-design.jpg">
+      <img  src="{{car.mainImage}}" alt="....">
     </div>
   </section>
 </div>

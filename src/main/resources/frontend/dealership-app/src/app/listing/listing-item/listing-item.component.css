@@ -1,8 +1,10 @@
 
+
 .container {
   display: inline-block;
 
 }
+
 
 body {
   background: #111 !important;
@@ -14,7 +16,8 @@ body {
   color: rgba(250, 250, 250, 0.8);
   margin-bottom: 0;
   display: inline-block;
-  width: 50%;
+  width: 100%;
+
 }
 
 .btn {

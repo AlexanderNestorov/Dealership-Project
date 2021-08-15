@@ -1,21 +1,20 @@
 img {
- width: 100%;
+  width: 300px;
   height: 200px;
 }
 
 .container {
   display: flex;
+  flex-direction: row;
+  padding: 0;
   flex-wrap: wrap;
-
-}
-.car {
-  border: 2px solid #0b2e13;
 }
 
-.container>* {
-  flex: 0 0 33.3333%;
+.app-home {
+  align-content: center;
 }
 
-.box {
-  width: 100%;
+.picture-container {
+  display: flex;
+  flex-direction: column;
 }
