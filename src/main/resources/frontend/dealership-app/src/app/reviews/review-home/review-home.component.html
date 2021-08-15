@@ -23,10 +23,10 @@
   </select>
 
   <form #editForm="ngForm" *ngIf="add" [formGroup]="updateForm" (ngSubmit)="editForm.form.valid && onAddReview(editForm)">
-    <input type="number" class="form-control" formControlName="car_id" [(ngModel)]="carId" >
+    <input type="number" class="form-control" formControlName="car_id" [(ngModel)]="carId" hidden>
     <input type="text" class="form-control" formControlName="text">
-    <input  class="form-control" formControlName="author" [(ngModel)]="author.username" >
-    <input  class="form-control" formControlName="timeOfCreation" [(ngModel)]="timeOfCreation" >
+    <input  class="form-control" formControlName="author" [(ngModel)]="author.username" hidden>
+    <input  class="form-control" formControlName="timeOfCreation" [(ngModel)]="timeOfCreation" hidden>
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>

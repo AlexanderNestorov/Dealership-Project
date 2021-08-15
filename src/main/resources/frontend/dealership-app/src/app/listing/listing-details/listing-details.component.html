@@ -4,11 +4,11 @@
 <section>
   <article class="car-header">
     <h1>{{car?.modelName}}</h1>
-    <img class="main-image" src="{{car?.mainImage}}">
   </article>
   <article class="car-images">
     <img src="{{car?.secondImage}}">
     <img src="{{car?.thirdImage}}">
+    <img class="main-image" src="{{car?.mainImage}}">
   </article>
   <article class="main-information">
     <p>Model name: {{car?.modelName}}</p>
@@ -16,12 +16,18 @@
     <p>Type: {{car?.type}}</p>
     <p>Transmission: {{car?.transmission}}</p>
     <p>Year of production: {{car?.yearOfProduction}}</p>
-    <p>Price: ${{car?.price}}</p>
+    <p>Price: {{car?.price}}</p>
   </article>
   <article class="secondary-information">
-
+    <p>Power: {{car?.power}}</p>
+    <p>Top speed: {{car?.topSpeed}}</p>
+    <p>Torque: {{car?.torque}}</p>
+    <p>Fuel Capacity: {{car?.fuelCapacity}}</p>
+    <p>Weight: {{car?.weight}}</p>
+    <p>Fuel Type: {{car?.fuelType}}</p>
+    <p>Drivetrain: {{car?.drivetrain}}</p>
   </article>
-  <button *ngIf="isAuthor" class="btn " (click)="onDelete(car?.id)"><i class="fab fa-github"></i> Delete</button>
+  <button *ngIf="isAuthor" class="btn " (click)="onDelete(car?.id)"> Delete</button>
 
 </section>
 
