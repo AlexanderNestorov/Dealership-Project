@@ -24,6 +24,7 @@ import {LocationsModule} from './locations/locations.module';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 import {  RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import {JwPaginationModule} from 'jw-angular-pagination';
 
 
 
@@ -54,7 +55,8 @@ import {  RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     ReviewsModule,
     LocationsModule,
     Ng2SearchPipeModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    JwPaginationModule
 
   ],
   exports: [

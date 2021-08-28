@@ -17,6 +17,7 @@ export class ListingAllComponent implements OnInit {
   hasUserRole = false;
   length: number;
   searchText;
+  pageOfItems: Array<any>;
 
   constructor(private carService: CarService, private tokenStorageService: TokenStorageService) { }
 
@@ -42,5 +43,10 @@ export class ListingAllComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
   }
 }

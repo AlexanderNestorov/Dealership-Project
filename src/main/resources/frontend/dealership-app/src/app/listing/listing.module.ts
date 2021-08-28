@@ -9,6 +9,7 @@ import { ListingDetailsComponent } from './listing-details/listing-details.compo
 import {RouterModule} from '@angular/router';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {ReviewsModule} from '../reviews/reviews.module';
+import {JwPaginationModule} from 'jw-angular-pagination';
 
 
 
@@ -30,7 +31,8 @@ import {ReviewsModule} from '../reviews/reviews.module';
         FormsModule,
         RouterModule,
         Ng2SearchPipeModule,
-        ReviewsModule
+        ReviewsModule,
+        JwPaginationModule
     ]
 })
 export class ListingModule { }

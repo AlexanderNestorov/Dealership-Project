@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
 import {CoreModule} from '../core/core.module';
 
+
 @NgModule({
   declarations: [
     AboutComponent

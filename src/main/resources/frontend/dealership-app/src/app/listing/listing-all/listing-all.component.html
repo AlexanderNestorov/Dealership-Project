@@ -6,10 +6,12 @@
 
 <div id="container" class="container">
   <app-listing-item *ngFor="let car of cars | filter:searchText" [car] = "car" class="box"></app-listing-item>
-  <section *ngIf="cars?.length === 0" class="no-content">
-    <h1>No listings at the moment!</h1>
-    <h2>Please check again later!</h2>
-  </section>
-
 </div>
+<div class="card-footer pb-0 pt-3">
+  <jw-pagination [items]="cars" (changePage)="onChangePage($event)"></jw-pagination>
+</div>
+<section *ngIf="cars?.length === 0" class="no-content">
+  <h1>No listings at the moment!</h1>
+  <h2>Please check again later!</h2>
+</section>
 <app-footer></app-footer>
