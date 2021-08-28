@@ -5,8 +5,14 @@ import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CloudinaryService} from '../../_services/cloudinary/cloudinary.service';
 import {TokenStorageService} from '../../_services/user/token-storage.service';
-import {carTypeValidator, drivetrainValidator, fuelTypeValidator, transmissionValidator} from '../../shared/validators.js';
+import {
+  carTypeValidator,
+  drivetrainValidator, fileExtensionValidator,
+  fuelTypeValidator,
+  transmissionValidator
+} from '../../shared/validators.js';
 import {Location} from '@angular/common';
+import {RxwebValidators} from '@rxweb/reactive-form-validators';
 
 
 
@@ -42,9 +48,15 @@ export class CreateComponent implements OnInit {
       drivetrain: ['', [Validators.required, drivetrainValidator]],
       price: ['', [Validators.required, Validators.min(500)]],
       yearOfProduction: ['', [Validators.required, Validators.min(1990)]],
-      mainImage: ['', Validators.required],
+      mainImage: ['', [Validators.required]],
+      mainImageFile: ['', [Validators.required, fileExtensionValidator('jpg, png, jpeg'),
+        RxwebValidators.image({maxHeight: 2000, maxWidth: 2000})]],
       secondImage: ['', Validators.required],
+      secondImageFile: ['', [Validators.required, fileExtensionValidator('jpg, png, jpeg'),
+        RxwebValidators.image({maxHeight: 2000, maxWidth: 2000})]],
       thirdImage: ['', Validators.required],
+      thirdImageFile: ['', [Validators.required, fileExtensionValidator('jpg, png, jpeg'),
+        RxwebValidators.image({maxHeight: 2000, maxWidth: 2000})]],
       author: ['', Validators.required]
     });
   }

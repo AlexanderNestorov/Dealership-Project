@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: ' https://dealership-app.herokuapp.com/'
+  baseUrl: 'http://localhost:8080/'
 };

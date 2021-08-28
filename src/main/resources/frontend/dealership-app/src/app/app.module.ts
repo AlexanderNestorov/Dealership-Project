@@ -23,6 +23,8 @@ import {ReviewsModule} from './reviews/reviews.module';
 import {LocationsModule} from './locations/locations.module';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
+import {  RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
     }),
     ReviewsModule,
     LocationsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    RxReactiveFormsModule
 
   ],
   exports: [
